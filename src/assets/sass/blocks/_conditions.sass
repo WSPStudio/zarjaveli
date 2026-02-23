@@ -1,0 +1,78 @@
+.conditions
+	&__wrapper
+		display: grid
+		grid-template-columns: percent(820, 1760) 1fr 
+		+adap('gap', 80, 20)
+		align-items: start
+
+	&__left
+		position: relative
+		display: flex
+
+		&:after
+			content: '' 
+			position: absolute
+			+adap('left', 20, 8)
+			+adap('top', 20, 8)
+			width: 100%
+			height: 100%
+
+			+adap('border-radius', 16, 12)
+			border: 1px solid rgba(#fff, .2)
+
+			pointer-events: none
+
+	&__img 
+		width: 100%
+		object-fit: cover
+		+adap('border-radius', 16, 12)
+		aspect-ratio: 820 / 440
+		height: auto
+
+	&__right 
+		display: grid
+		justify-items: start
+		+adap('gap', 40, 16)
+		align-self: center
+
+	&__list 
+		display: grid
+		+adap('gap', 12, 8)
+		
+		li 
+			display: flex
+			align-items: flex-start
+			+adap('gap', 12, 8)
+
+			+adap('font-size', 20, 16)
+			color: rgba($text, .8)
+
+			&:before
+				content: ''
+
+				+adap('width', 28, 20)
+				+adap('height', 28, 20)
+				align-self: center
+				flex-shrink: 0
+
+				background: url("data:image/svg+xml,%3Csvg width='26' height='15' viewBox='0 0 26 15' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.16699 9.31901L13.0997 13.2647C13.3395 13.4563 13.6453 13.5456 13.9506 13.5133C14.2559 13.481 14.5362 13.3296 14.7307 13.092L24.5003 1.15234' stroke='%23FF9900' stroke-width='2' stroke-linecap='round' /%3E%3Cpath d='M1.14355 10.3213C1.1871 10.3152 1.23139 10.3262 1.2666 10.3525L5.03809 13.1816L5.74219 13.709C5.4197 13.7342 5.09873 13.643 4.83887 13.4482L1.06641 10.6191C1.03125 10.5926 1.0082 10.5534 1.00195 10.5098C0.995702 10.466 1.00668 10.4211 1.0332 10.3857C1.05972 10.3505 1.09988 10.3275 1.14355 10.3213ZM6.79102 13.0781L6.6709 13.2256C6.46529 13.477 6.17462 13.6426 5.85547 13.6953L6.41211 13.0156L6.53516 12.8643L6.79102 13.0781ZM16.3066 1.00098C16.3502 0.996947 16.3939 1.01038 16.4277 1.03809C16.4613 1.0657 16.4825 1.10522 16.4873 1.14844C16.4919 1.19116 16.4793 1.23357 16.4531 1.26758L11.752 7.01465L11.4961 6.80176L16.1943 1.05957C16.2225 1.02614 16.2631 1.00502 16.3066 1.00098Z' stroke='%23FF9900' stroke-width='2' /%3E%3C/svg%3E") center / max(80%, 20px) no-repeat
+	
+
+	@media (max-width: 991px)
+		&__wrapper
+			grid-template-columns: 100%
+
+		&__left 
+			order: 1
+		
+		
+
+		
+		
+		
+		
+		
+		
+		
+		
+		

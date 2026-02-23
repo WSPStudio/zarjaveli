@@ -1,0 +1,512 @@
+@use 'sass:math'
+@use 'sass:color'
+
+=title 
+	+adap('font-size', 48, 32)
+	font-weight: 700
+
+=title-2
+	font-family: 'PTSerif', serif
+	+adap('font-size', 48, 24)
+	font-weight: 700
+	line-height: 1.08333
+	text-transform: uppercase
+
+=title-3 
+	+adap('font-size', 20, 16)
+	font-weight: 600
+	text-transform: uppercase
+
+=title-4 
+	+adap('font-size', 24, 16)
+	font-weight: 600
+
+
+=pt
+	font-family: 'PTSerif'
+	font-weight: 700
+	
+=h
+	font-weight: 100
+
+=el
+	font-family: 200
+
+=light
+	font-family: 300
+
+=regular
+	font-weight: 400
+
+=medium
+	font-weight: 500
+
+=sb
+	font-weight: 600
+
+=bold
+	font-weight: 700
+
+=eb
+	font-weight: 800
+
+=black
+	font-weight: 900
+
+
+=abs
+	position: absolute
+	left: 0
+	top: 0
+	z-index: -1
+
+	width: 100%
+	height: 100%
+
+=hov()
+	@media (any-hover: hover)
+		&:hover
+			@content
+
+	&:focus-visible
+		@content
+
+=hidden
+	position: absolute
+	width: 1px
+	height: 1px
+	margin: -1px
+	clip: rect(0 0 0 0)
+	overflow: hidden
+
+=line($line: 4)
+	overflow: hidden
+	display: -webkit-box
+	-webkit-box-orient: vertical
+	-webkit-line-clamp: $line
+
+@function arrow($size: contain)
+	@return url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDI2LjMuMSwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9ItCh0LvQvtC5XzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHZpZXdCb3g9IjAgMCA5LjcgNS41IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA5LjcgNS41OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+Cgkuc3Qwe2ZpbGw6bm9uZTtzdHJva2U6I0ZGMDAwMDtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQ7fQo8L3N0eWxlPgo8cGF0aCBjbGFzcz0ic3QwIiBkPSJNOSwwLjZMNC44LDQuOEwwLjYsMC42Ii8+Cjwvc3ZnPgo=') center / $size no-repeat
+
+
+=triangle($direction, $sizeX, $sizeY, $color)
+	content: ''
+	display: block
+	width: 0
+	height: 0
+	border-style: solid
+	-moz-transform: scale(.9999)
+		       
+	@if $direction == top 
+		border-width: 0 math.div($sizeX, 2) $sizeY 
+		border-color: transparent transparent $color transparent
+			
+	@if $direction == bottom
+		border-width: $sizeY math.div($sizeX, 2) 0
+		border-color: $color transparent transparent transparent
+			
+	@if $direction == left
+		border-width: math.div($sizeY, 2) $sizeX math.div($sizeY, 2) 0
+		border-color: transparent $color transparent transparent
+			
+	@if $direction == right
+		border-width: math.div($sizeY, 2) 0 math.div($sizeY, 2) $sizeX
+		border-color: transparent transparent transparent $color
+			
+	@if $direction == topright
+		border-width: 0 $sizeX $sizeY 0
+		border-color: transparent $color transparent transparent
+			
+	@if $direction == topleft
+		border-width: $sizeY $sizeX 0 0
+		border-color: $color transparent transparent transparent
+			
+	@if $direction == bottomright
+		border-width: 0 0 $sizeY $sizeX
+		border-color: transparent transparent $color transparent
+			
+	@if $direction == bottomleft
+		border-width: $sizeY 0 0 $sizeX
+		border-color: transparent transparent transparent $color
+
+=box-shadow-border($color: #000, $dir: 'all')
+	@if ($dir == 'bottom')
+		box-shadow: 0 1px 0 0 $color
+
+	@else if ($dir == 'top')
+		box-shadow: 0 -1px 0 0 $color
+
+	@else if ($dir == 'left')
+		box-shadow: -1px 0 0 0 $color
+
+	@else if ($dir == 'right')
+		box-shadow: 1px 0 0 0 $color
+
+	@else if ($dir == 'all')
+		box-shadow: 0 0 0 1px $color
+
+=gradientborder($gradient: linear-gradient(to right, black, red), $borderWidth: 1px)
+	position: relative
+
+	&:before
+		content: ''
+		position: absolute
+		inset: 0
+		padding: $borderWidth
+		background-image: $gradient
+		border-radius: inherit
+
+		mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0)
+		pointer-events: none
+
+=mask($mask, $color)
+	mask: $mask
+	-webkit-mask: $mask
+	background: $color
+
+
+=underline
+	text-decoration: underline
+	text-decoration-skip-ink: none
+	text-underline-offset: .1lh
+	transition: color .3s, text-decoration-color .3s
+
+=hover-underline
+	+underline
+	text-decoration-color: transparent
+
+	+hov
+		text-decoration-color: currentColor
+
+=swiper-controls
+	&.swiper
+		&-pagination,
+		&-navigation
+			display: none
+
+=hide-swiper
+	display: none
+	+swiper-controls
+
+
+@function percent($px, $from, $digits: 2)
+	$n: 1
+	@for $i from 1 through $digits
+		$n: $n * 10
+	$result: math.div($px, $from) * 100
+	@return math.div(round($result * $n), $n) * 1%
+
+@function minusPercent($px, $from, $add: false) 
+	$result: $from - ($from * math.div($px, 100))
+
+	@if $add == false
+		@return $result
+	 
+	@else 
+		@return #{$result+$add}
+
+@function plusPercent($px, $from) 
+	$result: $from + ($from * math.div($px, 100))
+	@return $result
+
+@function calculate($num1, $num2, $sign: '+')
+	@if ($sign == '+')
+		@return $num1+$num2
+ 
+	@else if ($sign == '-')
+		@return $num1 - $num2 
+
+@function rem($px)
+	$result: math.div($px, 16) + rem
+	@return $result 
+
+@function em($px, $current: 16)
+	$result: math.div($px, $current) + em
+	@return $result
+
+@function dark($color, $percent)
+	@return color-mix(in srgb, black $percent, $color)
+
+@function light($color, $percent)
+	@return color-mix(in srgb, white $percent, $color) 
+
+// transparent 
+@function tran($color: var(--active), $percent: 40)
+	@return color-mix(in srgb, #{$color} #{100 - $percent+'%'}, transparent #{$percent+'%'})
+
+// Динамический адаптив
+
+// на $maxWidth = 500px, на $minWidth = 200px. Между $maxWidth и $minWidth равномерно уменьшается. На >$maxWidth размерах постепенно увеличивается
+// +adap('width', 500, 200, 1)  
+
+// на размерах >=$maxWidth 500px, на $minWidth = 200px. Между $maxWidth и $minWidth равномерно уменьшается. 
+// +adap('width', 500, 200, 1, $min: true)  
+
+// на размере >991 не будет никакого значения, на размере <=991 будет постепенно уменьшаться до 200px
+// @media (max-width: 991px)
+// 	+adap('width', 500, 200, 1)  
+
+// для случаев выше $min: true нужно писать, чтобы на размерах >$maxWidth значение было таким же, как и во втором аргументе (500px)
+
+
+// на размерах >$firstBreakpoint 500px, на $minWidth = 200px. Равномерно уменьшается начиная с $firstBreakpoint размера. На $firstBreakpoint значение будет равно согласно дельте (*)
+// +adap('width', 500, 200)  
+
+// на размере >991 не будет никакого значения, на размере <=991 будет постепенно уменьшаться до 200px. 
+// если писать внутри медиазапроса, то нужно добавить $min: true, иначе в css будет двойной медиазапрос @media (max-width:991px) and (max-width:1400px)
+// @media (max-width: 991px)
+// 	+adap('width', 500, 200, $min: true)  
+
+// на размере <=991 не будет никакого значения, на размере >991 будет постепенно уменьшаться от 500px на $maxWidth и до минимального согласно дельте (*)
+// @media (min-width: 992px)
+// 	+adap('width', 500, 200, $min: true)  
+
+// на размере 991px = 500px и равномерно уменьшается до 200px на $minWdith. На размерах >991 ничего не задано  
+// @media (max-width: 991px) 
+// 	+adap('width', 500, 200, 991)   
+
+// на размере 991px = 500px и равномерно уменьшается до 200px на 768px. На размерах >991 и <768 ничего не задано  
+// @media (max-width: 991px) 
+// 	+adap('width', 500, 200, 991, 768, $min: true)  
+
+
+// * дельта (шаг) вычисляется согласно второму и третьему аргументу между ($maxWidth и $minWidth)
+
+=adap($property, $startSize, $minSize, $widthFrom: $maxWidth, $widthTo: $minWidth, $min: false) 
+	$widthFromMedia: #{$widthFrom + px}
+	$widthToMedia: #{$widthTo + px}
+	$slope: math.div(($startSize - $minSize), ($widthFrom - $widthTo))
+	$yIntersection: -$widthTo * $slope + $minSize
+	$flyValue: #{$yIntersection + px}" + " #{$slope * 100}vw
+
+	@if $minSize == 0
+		$minSize: 0.01
+
+	// Получение значения свойства 
+	$propertyValue: #{"round(clamp(min(#{$startSize + px}, #{$minSize + px}), " $flyValue ", max(#{$startSize + px}, #{$minSize + px})), 1px)"}
+
+	@if $widthFrom == 1
+		@if $min
+			// +adap('width', 500, 200, 1, $min: true)  
+
+			@media (max-width: #{$maxWidth+px})
+				#{$property}: calc(#{$minSize + px} + #{$startSize - $minSize} * ((100vw - #{$minWidth+px}) / #{$maxWidth - $minWidth}))
+
+			@media (min-width: #{$maxWidth+1+px})
+				#{$property}: #{$startSize+px}
+		
+		@else
+			// +adap('width', 500, 200, 1)  
+			#{$property}: calc(#{$minSize + px} + #{$startSize - $minSize} * ((100vw - #{$minWidth+px}) / #{$maxWidth - $minWidth}))
+
+	@else if $widthFrom > 1 and $widthFrom != $maxWidth and $widthTo == $minWidth
+		// +adap('width', 500, 200, 991)
+		#{$property}: $propertyValue
+
+	@else if $widthFrom > 1 and $widthFrom != $maxWidth and $widthTo != $minWidth
+		@if $min
+			// +adap('width', 500, 200, 991, 768, $min: true)
+			@media (min-width: $widthToMedia)
+				#{$property}: $propertyValue
+		 
+		@else
+			// +adap('width', 500, 200, 991, 768)
+			@media (min-width: $widthToMedia) and (max-width: $widthFromMedia) 
+				#{$property}: $propertyValue
+
+	@else	if $widthFrom == $maxWidth and $widthTo == $minWidth
+		@if $min
+			// +adap('width', 500, 200, $min: true)
+			#{$property}: $propertyValue
+
+		@else
+			// +adap('width', 500, 200)
+			@media (max-width: #{$firstBreakpoint + px})
+				#{$property}: $propertyValue
+
+			@media (min-width: #{$firstBreakpoint + 1 + px})
+				#{$property}: #{$startSize+px}
+
+	@else	if $widthFrom == $maxWidth and $widthTo != $minWidth
+		@media (min-width: #{$widthTo + px})
+			#{$property}: $propertyValue
+
+
+=net($gap, $m1199: 0, $m991: 0, $m767: 0, $m575: 0) 
+	display: grid
+	gap: #{$gap + px}
+
+	@if $m1199 != 0
+		@media (max-width: #{$firstBreakpoint + px})
+			gap: #{$m1199 + px}
+
+	@if $m991 != 0
+		@media (max-width: 991px)
+			gap: #{$m991 + px}
+
+	@if $m767 != 0
+		@media (max-width: 767px)
+			gap: #{$m767 + px}
+
+	@if $m575 != 0
+		@media (max-width: 575px)
+			gap: #{$m575 + px}
+
+=item($items: 4, $m1199: 0, $m991: 0, $m767: 0, $m575: 0)
+	grid-template-columns: repeat($items, 1fr)
+
+	@if $m1199 != 0
+		@media (max-width: #{$firstBreakpoint + px})
+			grid-template-columns: repeat($m1199, 1fr)
+
+	@if $m991 != 0
+		@media (max-width: 991px)
+			grid-template-columns: repeat($m991, 1fr)
+
+	@if $m767 != 0
+			@media (max-width: 767px)
+				grid-template-columns: repeat($m767, 1fr)
+
+	@if $m575 != 0
+		@media (max-width: 575px)
+			grid-template-columns: repeat($m575, 1fr)
+
+
+=f-gap($gap, $m1199: 0, $m991: 0, $m767: 0, $m575: 0) 
+	display: flex
+	flex-wrap: wrap
+	--gap: #{$gap + px}
+	gap: var(--gap)
+
+	@if $m1199 != 0
+		@media (max-width: 1199px)
+			--gap: #{$m1199 + px}
+
+	@if $m991 != 0
+		@media (max-width: 991px)
+			--gap: #{$m991 + px}
+
+	@if $m767 != 0
+		@media (max-width: 767px)
+			--gap: #{$m767 + px}
+
+	@if $m575 != 0
+		@media (max-width: 575px)
+			--gap: #{$m575 + px}
+
+=f-item($items: 4, $m1199: 0, $m991: 0, $m767: 0, $m575: 0)
+	width: calc((100% / #{$items})  - var(--gap) / #{$items} * #{$items - 1})  
+
+	@if $m1199 != 0
+		@media (max-width: 1199px)
+			width: calc((100% / #{$m1199})  - var(--gap) / #{$m1199} * #{$m1199 - 1})  
+
+	@if $m991 != 0 
+		@media (max-width: 991px)
+			width: calc((100% / #{$m991})  - var(--gap) / #{$m991} * #{$m991 - 1})  
+
+	@if $m767 != 0
+		@media (max-width: 767px)
+			width: calc((100% / #{$m767})  - var(--gap) / #{$m767} * #{$m767 - 1})  
+
+	@if $m575 != 0 
+		@media (max-width: 575px)
+			width: calc((100% / #{$m575})  - var(--gap) / #{$m575} * #{$m575 - 1})    
+	
+=t($trans: 0.4)
+	transition: all #{$trans + s} 
+
+=scrollbar($maxHeight, $scrollBarWidth: 4, $padding: 5) 
+	max-height: $maxHeight 
+
+	@if $scrollBarWidth != 0 and $padding != 0
+		@if $padding != 'auto'
+			padding-right: #{$scrollBarWidth + $padding + px} 
+
+	overflow-y: auto
+	overflow-x: hidden
+
+	@supports (-moz-appearance: none)
+		&
+			scrollbar-color: color.adjust($active, $lightness: 10%) $gray 
+			scrollbar-width: thin
+
+	&::-webkit-scrollbar 
+		width: #{$scrollBarWidth + px}
+
+	&::-webkit-scrollbar-track-piece 
+		background-color: $gray
+		border-radius: 4px
+
+	&::-webkit-scrollbar-thumb 
+		background-color: color.adjust($active, $lightness: 10%)  
+		border-radius: 4px 
+
+=scrollbar-x($maxWidth, $scrollBarHeight: 4, $padding: 5)
+	max-width: $maxWidth 
+
+	@if $scrollBarHeight != 0
+		@if $padding != 'auto'
+			padding-bottom: #{$scrollBarHeight + $padding + px} 
+		
+	overflow-x: auto
+	overflow-y: hidden
+
+	@supports (-moz-appearance: none)
+		&
+			scrollbar-color: color.adjust($active, $lightness: 10%) $gray
+			scrollbar-width: thin
+
+	@if $scrollBarHeight == 0
+		&::-webkit-scrollbar
+			display: none
+
+	@else
+		&::-webkit-scrollbar
+			height: #{$scrollBarHeight + px}
+				
+	&::-webkit-scrollbar-track-piece
+		background: $gray
+		border-radius: 4px
+				
+	&::-webkit-scrollbar-thumb
+		background: color.adjust($active, $lightness: 10%)  
+		border-radius: 4px
+
+
+
+@keyframes fadeInTop 
+	0%
+		translate: 0 -100%
+
+	100%
+		translate: 0 0
+
+@keyframes fadeOutTop 
+	0%
+		translate: 0 0
+
+	100%
+		translate: 0 -200%
+
+@keyframes showIn 
+	0%
+		opacity: 0
+
+	100%
+		opacity: 1
+
+@keyframes showOut
+	0%
+		opacity: 1
+
+	100%
+		opacity: 0
+
+@keyframes pulse
+	0%
+		opacity: 0
+			
+	80%,
+	100%
+		opacity: 1

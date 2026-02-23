@@ -1,0 +1,116 @@
+
+.slider 
+	position: relative
+
+	&:has(.hover-translate)
+		.swiper 
+			padding-block: 12px
+			margin-block: -12px
+	
+	&__arrow 
+		+adap('width', 44, 36)
+		+adap('height', 44, 36)
+		flex-shrink: 0
+		display: flex
+		align-items: center
+		justify-content: center
+
+		border: 1px solid $active
+		border-radius: 50%
+		+t 
+
+		+hov
+			background: $active
+	
+		svg 
+			max-width: 40%
+			max-height: 40%
+
+			stroke: #fff
+
+	
+.swiper
+	+t
+
+	&-pagination
+		display: flex
+		flex-wrap: wrap
+		justify-content: center
+		gap: 4px 12px
+		width: 100%
+
+		+adap('margin-top', 40, 20)
+
+		&-bullet
+			width: 6px
+			height: 6px
+
+			border-radius: 50%
+			background: #fff
+			cursor: pointer
+			+t
+
+			&-active
+				scale: 1.3
+				background: $active
+
+				&:only-child
+					display: none
+
+		&-lock 
+			display: none
+
+	&-button-lock 
+		display: none
+
+	&-wrapper 
+		display: grid
+		grid-auto-flow: column
+		justify-content: start
+
+	&-slide 
+		display: grid
+		grid-template-columns: 100%
+
+	&-scrollbar 
+		width: 100%
+		height: 4px
+		margin-top: 12px
+
+		background: $gray 
+		cursor: pointer
+		overflow: hidden
+
+		&-drag
+			background: $active
+
+html
+	&:not(.loaded)
+		.swiper
+			opacity: 0 
+ 
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

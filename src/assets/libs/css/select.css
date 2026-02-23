@@ -1,0 +1,178 @@
+@keyframes ss-valueIn {
+	0% {
+		transform: scale(0);
+		opacity: 0;
+	}
+
+	100% {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+
+@keyframes ss-valueOut {
+	0% {
+		transform: scale(1);
+		opacity: 1;
+	}
+
+	100% {
+		transform: scale(0);
+		opacity: 0;
+	}
+}
+
+.select.disabled {
+	background-color: var(--disabled-color);
+	cursor: not-allowed;
+}
+
+.select.disabled .select__values .disabled {
+	color: var(--ss-font-color);
+}
+
+.select.disabled .select__values .select__value .select__value-delete {
+	cursor: not-allowed;
+}
+
+.select_open-bottom {
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+.select_open-top {
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+}
+
+.select_open-bottom .select__arrow,
+.select_open-top .select__arrow {
+	transform: rotate(-180deg);
+}
+
+.select-deselect {
+	flex: 0 1 auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: fit-content;
+	margin: 0 var(--ss-spacing-m);
+}
+
+.select-deselect:focus-visible {
+	outline: none;
+}
+
+.select-deselect svg {
+	width: 12px;
+	height: 12px;
+}
+
+.select-deselect path {
+	fill: none;
+	stroke: currentColor;
+	stroke-width: 20;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+
+.select__content {
+	position: absolute;
+	z-index: 5;
+	opacity: 0;
+	transform: scaleY(0);
+	transition: transform 0.3s, opacity 0.3s, border-radius 0.3s, border-color 0.3s;
+	transform-origin: center top;
+}
+
+.select__content.ss-relative {
+	position: relative;
+	height: 100%;
+}
+
+.select__content.select_open-bottom,
+.select__content.select_open-top {
+	opacity: 1;
+	transform: scaleY(1);
+}
+
+.select__content.select_open-bottom {
+	transform-origin: center top;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+.select__content.select_open-top {
+	transform-origin: center bottom;
+}
+
+.select__optgroup-label {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: var(--ss-spacing-m) var(--ss-spacing-l);
+}
+
+.select__optgroup-label-text {
+	flex: 1 1 auto;
+	font-weight: bold;
+	color: var(--ss-font-color);
+}
+
+.select__optgroup-label:has(.ss-arrow) {
+	cursor: pointer;
+}
+
+.select__optgroup-actions {
+	flex: 0 1 auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: var(--ss-spacing-m);
+}
+
+.select__optgroup-selectall {
+	flex: 0 0 auto;
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	cursor: pointer;
+}
+
+.select__optgroup-selectall span {
+	flex: 0 1 auto;
+	display: flex;
+	align-items: center;
+	font-size: 0.8em;
+	padding-right: var(--ss-spacing-s);
+}
+
+.select__optgroup-selectall svg {
+	width: 12px;
+	height: 12px;
+	fill: none;
+	stroke: currentColor;
+	stroke-width: 8px;
+}
+
+.select__optgroup-selectall.selected {
+	color: var(--active);
+}
+
+
+
+.ss-closable {
+	flex: 0 1 auto;
+	display: flex;
+	cursor: pointer;
+}
+
+.ss-closable .select__arrow {
+	flex: 1 1 auto;
+	width: 10px;
+	height: 10px;
+}
+
+.select select {
+	pointer-events: none;
+}

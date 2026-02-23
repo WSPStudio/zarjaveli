@@ -1,0 +1,319 @@
+
+.header
+	position: fixed
+	left: 0
+	top: 0
+	z-index: 10
+
+	width: 100%
+	will-change: transform
+
+	@media (min-width: 768px)
+		animation: headerFixedBackground forwards
+		animation-timeline: scroll() 
+		animation-range: 100px 150px 
+		transition: opacity .4s
+
+		@keyframes headerFixedBackground 
+			0% 
+				background: transparent  
+
+			100%
+				background: #101010
+
+	&__top
+		display: flex
+		align-items: center
+		justify-content: space-between
+		+adap('gap', 20, 12  , $widthTo: 1200)
+
+		&-wrapper
+			display: flex
+			align-items: center
+			+adap('padding-block', 20, 8)
+
+			.container 
+				width: 100%
+
+	&__logo 
+		img 
+			+adap('width', 210, minusPercent(30, 210)  , $widthTo: 1200)
+			+adap('height', 44, minusPercent(30, 44)  , $widthTo: 1200)
+
+	&__menu 
+		display: flex
+		align-items: center
+		flex-wrap: wrap
+		row-gap: 12px 
+		+adap('column-gap', 40, 12  , $widthTo: 1200)
+		+adap('font-size', 16, 15  , $widthTo: 1200)
+
+		color: rgba(#fff, .6)
+		text-shadow: 1px 2px 0 0 rgba(0, 0, 0, 0.2)
+
+		a
+			+hov
+				color: $active
+
+	&__address
+		display: grid
+		grid-template-columns: 24px 1fr
+		display: flex
+		align-items: center
+		+adap('gap', 12, 8)
+
+		text-shadow: 1px 2px 0 0 rgba(0, 0, 0, 0.2)
+
+		svg 
+			max-width: 20px
+			max-height: 20px
+			fill: none
+			stroke: $active
+
+	&__button
+		+adap('min-width', 220, 120, $widthTo: 1200)
+
+		+bold  
+		order: 2 
+
+		@media (max-width: #{$firstBreakpoint + px})
+			min-width: 160px
+			min-height: 40px
+
+
+	&-main 
+		position: relative
+		padding-top: var(--headerFixedHeight)
+
+		@media (max-height: 900px) and (min-width: 768px)
+			min-height: max(500px, 100dvh)
+			
+		@media (min-height: 901px)
+			+adap('min-height', 800, 400)
+
+		&-container 
+			width: 100%
+
+		&__slider
+			position: absolute
+			left: 0
+			top: 0
+			z-index: 1
+			display: flex
+			width: 100%
+			height: 100%
+
+			&:after
+				content: ''
+				+abs 
+				z-index: 2
+				background: linear-gradient(180deg, #101010 0%, rgba(16, 16, 16, 0.504808) 100%)
+				pointer-events: none
+
+			img 
+				position: absolute
+				left: 0
+				top: 0
+				width: 100%
+				height: 100%
+				// height: auto
+				object-fit: cover
+
+		&__pagination 
+			@media (max-width: #{$firstBreakpoint + px}) or (min-width: #{$firstBreakpoint + 1 + px})
+				margin-top: 0
+
+		&__navigation
+			position: absolute
+			left: 50%
+			z-index: 4
+			+adap('bottom', 40, 20)
+			translate: -50% 0
+			display: flex
+			align-items: center
+			gap: 12px
+
+		&__wrapper
+			position: relative
+			z-index: 3
+			display: grid
+			justify-items: center
+			grid-template-columns: 100%
+			align-content: start
+			+adap('padding-block', 120, 40)
+
+			text-align: center
+
+			pointer-events: none
+
+			&>*
+				pointer-events: auto
+
+		&__title
+			margin-bottom: 12px
+			+adap('gap', 20, 16)
+
+			+pt
+			font-weight: 700
+			+adap('font-size', 80, 48, $widthTo: 992,   $min: true)
+			line-height: 1.15
+			text-transform: uppercase
+			 
+		&__subtitle 
+			+adap('margin-bottom', 40, 20)
+			
+			+adap('font-size', 32, 26, $widthTo: 992,   $min: true)
+			font-weight: 500
+			line-height: 1.375
+
+		&__text 
+			display: grid
+			justify-items: center
+			+adap('gap', 20, 16)
+			+adap('margin-bottom', 60, 20)
+
+			+adap('font-size', 20, 16)
+			font-weight: 500
+
+			svg 
+				+adap('width', 146, minusPercent(20, 146))
+				+adap('height', 18, minusPercent(20, 18))
+
+				fill: $active
+
+		&__buttons
+			display: flex
+			align-items: center
+			justify-content: center
+			+adap('gap', 20, 12)
+		
+
+	@media (max-width: #{$burgerMedia+px})
+		$padding-top: 40
+		$padding-bottom: 40
+		$padding-x: 20
+		$mobile-bg: $bg
+ 
+		&__mobile
+			position: fixed
+			right: -100vw
+			top: var(--headerFixedHeight)
+			z-index: 5
+
+			display: grid
+			grid-template-columns: 100%
+			justify-items: start
+			align-content: start
+			gap: 20px
+			width: min(500px, 101vw)
+			padding: #{$padding-top+px} #{$padding-x+px} #{$padding-bottom+px}
+
+			background: $mobile-bg
+			color: $text
+
+			opacity: 0
+			transition: right .3s, opacity .3s
+			+scrollbar(100vh, $scrollBarWidth: 4, $padding: 0)
+			pointer-events: none
+
+			&.active
+				right: 0px 
+				opacity: 1
+				pointer-events: auto
+
+		&__nav
+			width: 100%
+
+		&__menu
+			display: grid
+			grid-template-columns: 100%
+			gap: 20px
+			width: 100%
+
+		&__top 
+			justify-content: flex-end
+			+adap('gap', 24, 12, 1199)
+
+		&__logo 
+			margin-right: auto
+
+			img 
+				+adap('width', 210, minusPercent(30, 210)  , 1199)
+				+adap('height', 44, minusPercent(30, 44)  , 1199)
+
+
+	@media (max-width: 991px)
+		&__button 
+			min-width: auto
+			min-height: 40px
+			font-size: 14px
+
+		&-main
+			&__title 
+				+adap('font-size', 44, 28, 991)
+
+			&__subtitle 
+				+adap('font-size', 28, 20, 991)
+
+
+	@media (max-width: 767px)
+		background: $bg
+ 
+		&-main 
+			&__wrapper
+				padding: 40px 0 80px 0
+
+			&__title 
+				&:before,
+				&:after
+					display: none
+
+	@media (max-width: 575px)
+		&__top
+			&-wrapper 
+				min-height: 55px
+
+		&-main 
+			padding-top: 55px
+
+			&__buttons   
+				display: grid
+				grid-template-columns: 100%
+				width: 100%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

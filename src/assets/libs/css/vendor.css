@@ -1,0 +1,19 @@
+@import "viewer.css";
+@import "animate.css";
+
+@import "swiper/swiper.css";
+@import "swiper/modules/navigation.css";
+
+#spotlight {
+	background-color: rgba(0, 0, 0, .8);
+	backdrop-filter: blur(8px);
+}
+
+/* 
+@import "swiper/modules/free-mode.css";
+@import "swiper/modules/grid.css";
+@import "swiper/modules/parallax.css";
+@import "swiper/modules/scrollbar.css";
+@import "swiper/modules/thumbs.css"; 
+@import "swiper/modules/zoom.css";  
+*/

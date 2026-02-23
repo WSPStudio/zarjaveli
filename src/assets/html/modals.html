@@ -1,0 +1,46 @@
+<!-- Модалки -->
+
+<div class="modals">
+	<!-- Заказать звонок -->
+	<div class="modal modal-call" id="modal-call">
+		<div class="modal__dialog">
+			<div class="modal__content">
+				<button class="modal__close" type="button" data-modal-close>
+					<svg class="close">
+						<use xlink:href="assets/img/sprite.svg#close"></use>
+					</svg>
+				</button>
+				<div class="form modal__form">
+					<div class="title-2 modal__title">Обратный звонок</div>
+					<form>
+						<input type="hidden" name="info" class="modal-info">
+						<div class="form__fields">
+							<input class="input" type="text" name="name" placeholder="Имя" required>
+							<input class="input" type="tel" name="phone" placeholder="Телефон" required>
+							<label class="checkbox">
+								<input class="checkbox__input" type="checkbox" checked required>
+								<span class="checkbox__text">
+									Нажимая на кнопку “Отправить”, Вы соглашаетесь с
+									<a href="text.html" class="active-text hover-underline" target="_blank">Пользовательским соглашением</a>
+									и
+									<a href="text.html" class="active-text hover-underline" target="_blank">Политикой конфиденциальности</a>
+								</span>
+							</label>
+							<button class="button submit">Отправить</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Окно благодарности -->
+	<div class="modal modal-thank" id="modal-thank">
+		<div class="modal__dialog">
+			<div class="modal__content">
+				<div class="modal__title">Спасибо за заявку!</div>
+				<img src="assets/img/icons/check.svg" width="80" height="80" alt="" loading="lazy" decoding="async">
+			</div>
+		</div>
+	</div>
+</div>

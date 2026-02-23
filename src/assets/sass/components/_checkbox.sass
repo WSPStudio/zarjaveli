@@ -1,0 +1,86 @@
+$checkbox-width: 16px
+$checkbox-height: 16px
+$checkbox-gap: 16px
+
+$checkbox-active-color: #fff
+$checkbox-bg: #fff 
+$checkbox-background-size: 55%
+
+$checkbox-border-color: $active
+$checkbox-border-radius: 4px 
+
+.checkbox 
+	position: relative
+	display: flex
+	align-items: flex-start 
+	+adap('gap', 16, 8) 
+
+	user-select: none
+	cursor: pointer
+
+	&__input
+		position: relative
+		
+		display: flex
+		flex: 0 0 $checkbox-width
+		width: $checkbox-width 
+		height: $checkbox-height
+		margin: 0
+
+		cursor: pointer
+
+		&:before
+			content: '' 
+
+			aspect-ratio: 1
+
+			border: 1px solid $checkbox-border-color
+			border-radius: $checkbox-border-radius 
+			+mask(url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M16 4C16 1.79086 14.2091 0 12 0H4C1.79086 0 0 1.79086 0 4V12C0 14.2091 1.79086 16 4 16H12C14.2091 16 16 14.2091 16 12V4ZM4.00699 10.1748C3.72841 9.96957 3.67217 9.57584 3.88216 9.30084C4.08708 9.03247 4.46929 8.97788 4.74116 9.17814L6.2757 10.3086L11.1399 4.46926C11.3569 4.20877 11.7426 4.1702 12.0069 4.38258C12.2778 4.6003 12.3176 4.99788 12.0951 5.26494L6.48472 12L4.00699 10.1748Z' fill='%23FF9900' /%3E%3C/svg%3E") center / cover no-repeat, transparent)
+
+			transition: background-color .3s, border-color .3s
+			box-sizing: border-box
+
+		&:checked
+			&:before 
+				background: $active
+
+		&:disabled~span
+			opacity: .4 
+			cursor: not-allowed 
+
+		&:focus-visible
+			outline: none 
+			
+			&:before 
+				border-color: $active
+
+	&__text 
+		text-box: trim-start cap text
+
+	&-text 
+		position: relative
+
+		.checkbox
+			&__text 
+				+t 
+
+			&__input 
+				+hidden 
+				
+				&:focus-visible+.checkbox__text
+					&:after
+						content: ''
+
+						position: absolute
+						inset: 0
+						z-index: -1
+						+box-shadow-border($active)
+						border-radius: $checkbox-border-radius 
+
+				&:before
+					display: none
+
+				&:checked~.checkbox__text
+					color: $active
+

@@ -1,0 +1,403 @@
+
+.form
+	&__fields 
+		gap: 12px
+
+		.checkbox 
+			margin-top: 8px
+
+.input, .textarea
+	width: 100%
+	padding-inline: 12px
+
+	border: 1px solid #383838
+	border-radius: 12px
+
+	font: inherit
+
+	$error-color: #f03
+
+	&:user-invalid
+		color: $error-color
+		border-color: $error-color
+
+		&::placeholder
+			color: $error-color
+
+	&::placeholder
+		color: rgba(255, 255, 255, 0.32)
+
+.input
+	height: 48px
+
+.textarea
+	height: 96px
+	padding-block: 12px
+
+
+// form.form-dragover
+// 	position: relative
+
+// 	$file-error-color: #f03
+
+// 	&:before
+// 		content: ''
+// 		position: absolute
+// 		left: 50%
+// 		top: 50%
+// 		translate: -50% -50%
+// 		z-index: 5
+
+// 		width: calc(100% + 12px)
+// 		height: calc(100% + 12px)
+				
+// 		border: 2px dashed $active
+// 		border-radius: 8px
+// 		background-color: rgba($active, 0.2)
+// 		transition: background-color 0.2s, border-color 0.2s
+
+// 	&:after 
+// 		content: "Отпустите мышь, чтобы загрузить файлы"
+// 		position: absolute
+// 		top: 50%
+// 		left: 50%
+// 		transform: translate(-50%, -50%)
+// 		padding: 8px 16px
+
+// 		background: $active
+// 		border-radius: 8px
+		
+// 		color: #fff
+// 		font-size: 14px
+// 		white-space: nowrap
+// 		pointer-events: none
+// 		opacity: 0.9
+				
+// 	&-error 
+// 		&:before
+// 			border-color: $file-error-color
+// 			background-color: rgba($file-error-color, 0.2)
+
+// 		&:after
+// 			content: 'Недопустимый тип файла'
+// 		background: $file-error-color
+
+// .input-file
+// 	$input-file-icon-color: currentColor
+
+// 	$input-file-icon-size: 24
+// 	$input-file-icon-size-mobile: 24
+
+// 	$input-file-gap: 20
+// 	$input-file-gap-mobile: 20
+
+// 	position: relative
+// 	width: 100%
+	
+// 	+t
+
+// 	&:focus-within
+// 		+underline
+
+// 	+hov
+// 		color: $active
+
+// 	input 
+// 		position: absolute
+// 		inset: 0
+// 		opacity: 0
+
+// 	&-text
+// 		display: flex
+// 		align-items: flex-start
+
+// 		@if $input-file-gap != $input-file-gap-mobile
+// 			+adap('gap', $input-file-gap, $input-file-gap-mobile)
+
+// 		@else
+// 			gap: #{$input-file-gap+px}
+
+// 		&:after 
+// 			content: ''
+// 			+abs 
+// 			z-index: 1
+// 			cursor: pointer
+
+// 		&:before
+// 			content: ''
+// 			position: relative
+// 			z-index: 2
+// 			align-self: center
+// 			flex-shrink: 0
+
+// 			@if $input-file-icon-size != $input-file-icon-size-mobile
+// 				+adap('flex-basis', $input-file-icon-size, $input-file-icon-size-mobile)
+
+// 			@else
+// 				flex-basis: #{$input-file-icon-size+px}
+
+// 			aspect-ratio: 1
+// 			+mask(url("data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTYgMTYiIHhtbDpzcGFjZT0icHJlc2VydmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMTYgMTYiPjxwYXRoIGQ9Im03LjY0NiAxMy42NDYuNzA3LjcwNyA2LTZhNC4wNCA0LjA0IDAgMCAwIDAtNS43MDcgNC4wMzkgNC4wMzkgMCAwIDAtNS43MDcgMGwtNi41IDYuNWEzLjMzMiAzLjMzMiAwIDAgMCAwIDQuNzA3Yy42NDguNjQ4IDEuNTAxLjk3NCAyLjM1NC45NzRzMS43MDUtLjMyNSAyLjM1NC0uOTc0bDYtNmMuNDk1LS40OTUuNzY3LTEuMTUzLjc2Ny0xLjg1M3MtLjI3Mi0xLjM1OC0uNzY4LTEuODU0Yy0uOTktLjk5LTIuNzE3LS45OS0zLjcwNyAwbC01LjUgNS41LjcwNy43MDcgNS41LTUuNWMuNjExLS42MTEgMS42ODItLjYxMSAyLjI5MyAwIC4zMDYuMzA2LjQ3NS43MTMuNDc1IDEuMTQ3cy0uMTY5Ljg0MS0uNDc1IDEuMTQ2bC02IDZjLS45MDguOTA4LTIuMzg1LjkwOC0zLjI5MyAwcy0uOTA4LTIuMzg1IDAtMy4yOTNsNi41LTYuNWMxLjE4NC0xLjE4NCAzLjEwOS0xLjE4NCA0LjI5MyAwczEuMTg0IDMuMTA5IDAgNC4yOTNsLTYgNnoiIGZpbGw9IiM5NTk1OTciIGNsYXNzPSJmaWxsLTAwMDAwMCI+PC9wYXRoPjwvc3ZnPg==") left center / contain no-repeat, $input-file-icon-color)
+
+// .input-image
+// 	position: relative
+
+// 	display: flex
+// 	align-items: center
+// 	justify-content: center
+
+// 	width: 300px
+// 	height: 300px
+
+// 	background: #ccc 
+// 	border-radius: 12px
+// 	overflow: hidden
+// 	+t
+
+// 	input 
+// 		width: 100%
+// 		height: 100%
+ 
+// 		opacity: 0
+
+// 	&__img
+// 		z-index: 1
+
+// 		img 
+// 			width: 100%
+// 			height: 100%
+// 			object-fit: cover
+
+// 	&__img,
+// 	&__text 
+// 		position: absolute
+// 		inset: 0
+
+// 	&__text
+// 		z-index: 2
+// 		display: flex
+// 		justify-content: center
+// 		align-items: center 
+
+// 	&__remove 
+// 		position: absolute
+// 		right: 10px
+// 		top: 10px
+// 		z-index: 4
+
+// 		width: 32px
+// 		height: 32px
+// 		display: flex
+// 		align-items: center
+// 		justify-content: center
+
+// 		font-size: 48px
+// 		color: $active
+// 		visibility: hidden
+
+// 		&.active
+// 			visibility: visible
+
+// .input-date
+// 	$input-date-icon-size: 20px
+// 	$input-date-icon-offset: 16px
+
+// 	position: relative
+// 	z-index: 2
+
+// 	font: inherit
+
+// 	input
+// 		font: inherit
+// 		cursor: pointer
+
+// 		&::-webkit-calendar-picker-indicator
+// 			display: none
+
+// 	&:after
+// 		content: ''
+// 		position: absolute
+// 		top: 50%
+// 		right: $input-date-icon-offset
+// 		z-index: 1
+// 		transform: translateY(-50%)
+// 		width: $input-date-icon-size
+// 		aspect-ratio: 1
+
+// 		+mask(url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20,2H19V1a1,1,0,0,0-2,0V2H7V1A1,1,0,0,0,5,1V2H4A4,4,0,0,0,0,6V20a4,4,0,0,0,4,4H20a4,4,0,0,0,4-4V6A4,4,0,0,0,20,2Zm2,18a2,2,0,0,1-2,2H4a2,2,0,0,1-2-2V6A2,2,0,0,1,4,4H5V5A1,1,0,0,0,7,5V4H17V5a1,1,0,0,0,2,0V4h1a2,2,0,0,1,2,2Z'/%3E%3Cpath d='M19,7H5A1,1,0,0,0,5,9H19a1,1,0,0,0,0-2Z'/%3E%3Cpath d='M7,12H5a1,1,0,0,0,0,2H7a1,1,0,0,0,0-2Z'/%3E%3Cpath d='M7,17H5a1,1,0,0,0,0,2H7a1,1,0,0,0,0-2Z'/%3E%3Cpath d='M13,12H11a1,1,0,0,0,0,2h2a1,1,0,0,0,0-2Z'/%3E%3Cpath d='M13,17H11a1,1,0,0,0,0,2h2a1,1,0,0,0,0-2Z'/%3E%3Cpath d='M19,12H17a1,1,0,0,0,0,2h2a1,1,0,0,0,0-2Z'/%3E%3Cpath d='M19,17H17a1,1,0,0,0,0,2h2a1,1,0,0,0,0-2Z'/%3E%3C/svg%3E") no-repeat center / contain, currentColor) 
+// 		pointer-events: none
+
+// .password
+// 	position: relative
+
+// 	width: 100%
+
+// 	&__icon 
+// 		position: absolute
+// 		right: 12px
+// 		top: 50%
+// 		translate: 0 -50%
+
+// 		width: 16px
+// 		height: 12px
+
+// 		background: url(../img/icons/password-hide.svg) center / contain no-repeat 
+// 		+t
+
+// 		&.active
+// 			background-image: url(../img/icons/password-show.svg)
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

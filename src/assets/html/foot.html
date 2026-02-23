@@ -1,0 +1,79 @@
+</main>
+
+@@include('footer.html')
+
+</div>
+
+@@include('modals.html')
+
+<!-- Библиотеки -->
+<script src="assets/js/vendor.js" defer></script>
+
+<!-- Общие скрипты -->
+<script src="assets/js/script.js" defer></script>
+
+<!-- Карта -->
+<script>
+	function initMaps(id, address) {
+		if (document.querySelector(`#${id}`)) {
+			let locationX = parseFloat(address[0][0].split(',')[0]);
+			let locationY = parseFloat(address[0][0].split(',')[1]);
+
+			let mapOffset = window.innerWidth <= 767 ? 0 : 0.020000
+			myMap = new ymaps.Map(id, {
+				center: [locationX, locationY - mapOffset],
+				zoom: 14,
+				controls: ['largeMapDefaultSet'],
+			}, {
+				searchControlProvider: 'yandex#search'
+			});
+
+			for (let i = 0; i < address.length; i++) {
+				myPlacemarkTemp = new ymaps.Placemark(address[i][0].split(','), {
+					balloonContent: address[i][1],
+				}, {
+					iconLayout: 'default#imageWithContent',
+					iconImageHref: "assets/img/icons/location.svg",
+					iconImageSize: [39, 50],
+					iconImageOffset: [-15, -44],
+				});
+
+				myMap.geoObjects.add(myPlacemarkTemp);
+			}
+
+			if (address.length > 1) {
+				// Автомасштаб меток
+				myMap.setBounds(myMap.geoObjects.getBounds(), {
+					checkZoomRange: true,
+					zoomMargin: 30
+				});
+			}
+
+			// Запретить скролл мышью
+			myMap.behaviors.disable('scrollZoom')
+
+			// Удаление прелоадера
+			layer = myMap.layers.get(0).get(0);
+			waitForTilesLoad(layer).then(function () {
+				document.querySelectorAll('.is-active').forEach(element => {
+					if (element.parentElement.querySelector(`#${id}`)) {
+						element.classList.remove('is-active')
+					}
+				});
+			});
+		}
+	}
+
+	function init() {
+		initMaps('map', [
+			[
+				'55.755864, 37.617698',
+				'г. Москва,  Каширский пр. 25, корп. 4',
+			],
+		])
+	}
+</script>
+
+</body>
+
+</html>

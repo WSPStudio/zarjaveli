@@ -1,0 +1,153 @@
+.format
+	&__wrapper
+		display: grid
+		grid-template-columns: repeat(auto-fill, minmax(max(30%, 200px), 1fr))
+
+		border-radius: 16px
+		isolation: isolate
+		overflow: clip
+		overflow-clip-margin: 2px
+
+	&__item 
+		position: relative
+		z-index: 1
+
+		color: rgba(#fff, .8) 
+		border: 2px solid rgba(255, 255, 255, 0.12)
+
+		aspect-ratio: 573/372
+		+t
+		overflow: hidden
+		cursor: pointer
+
+		&:first-child
+			border-top-left-radius: 16px
+
+		&:last-child
+			border-bottom-right-radius: 16px
+
+		@media (min-width: 992px)
+			&:nth-child(3)
+				border-top-right-radius: 16px
+
+			&:nth-child(3n + 1):nth-last-child(-n + 3)
+				border-bottom-left-radius: 16px
+
+		+hov
+			border-color: rgba($active, 50%)
+			color: #fff
+
+			&:before
+				opacity: 1
+
+			&:after
+				opacity: 0
+
+			.format__item
+				&-title 
+					margin-left: 0
+
+					&:before
+						opacity: 1
+
+		&:before
+			content: ''
+			+abs 
+			z-index: 1
+			background: linear-gradient(180deg, rgba(16, 16, 16, 0) 0%, #101010 100%)
+			opacity: 0
+			+t
+
+		&:after
+			content: ''
+			+abs 
+			z-index: 0
+			background: radial-gradient(50% 50% at 50% 50%, rgba(16, 16, 16, 0.32) 0%, rgba(16, 16, 16, 0.4) 100%)
+			+t
+
+		&-img 
+			position: absolute
+			left: 0
+			top: 0
+			width: 100%
+			height: 100%
+
+			object-fit: cover
+			
+		&-content 
+			position: absolute
+			left: 0
+			top: 0
+			z-index: 1
+
+			width: 100%
+			height: 100%
+			display: grid
+			justify-items: start
+			align-content: end
+			+adap('padding', 40, 16)
+
+		&-title 
+			display: flex
+			+adap('gap', 12, 8)
+			margin-left: -20px
+
+			+adap('font-size', 32, 20)
+			line-height: 1.375
+			font-weight: 500
+
+			+t
+
+			&:before
+				content: ''
+
+				width: 2px
+				height: 100% 
+
+				border-radius: 2px
+				background: $active
+				opacity: 0
+				+t
+
+
+	@media (max-width: 991px)
+		&__wrapper
+			grid-template-columns: repeat(2, 1fr)
+
+		&__item 
+			@media (min-width: 576px)
+				&:nth-child(2)
+					border-top-right-radius: 16px
+
+				&:nth-child(2n + 1):nth-last-child(-n + 2)
+					border-bottom-left-radius: 16px
+				
+
+	@media (max-width: 575px)
+		&__wrapper
+			grid-template-columns: 100%
+
+		&__item 
+			&:first-child
+				border-top-left-radius: 16px
+				border-top-right-radius: 16px
+
+			&:last-child
+				border-bottom-left-radius: 16px
+				border-bottom-right-radius: 16px
+				
+			
+			
+			
+
+
+
+			
+			
+			
+
+
+
+			
+			
+			

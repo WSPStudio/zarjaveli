@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<title>📊 Статистика проекта</title>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<style>
+		body {
+			font-family: sans-serif;
+			padding: 20px;
+			background: #f4f4f4;
+			overflow-x: clip;
+		}
+
+		h1 {
+			margin-bottom: 20px;
+		}
+
+		.charts-container {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			gap: 20px;
+		}
+
+		.chart-wrapper {
+			width: 100%;
+			max-width: 33vw;
+		}
+
+		canvas {
+			width: 100% !important;
+			background: #fff;
+			border: 1px solid #ccc;
+			padding: 12px;
+		}
+	</style>
+	</style>
+</head>
+
+<body>
+	<h1>📊 Статистика проекта</h1>
+
+	<div class="charts-container">
+		<div class="chart-wrapper">
+			<canvas id="filesChart"></canvas>
+		</div>
+		<div class="chart-wrapper">
+			<canvas id="sessionsChart"></canvas>
+		</div>
+	</div>
+
+
+	<script src="/statistics/dashboard/dashboard.js"></script>
+</body>
+
+</html>

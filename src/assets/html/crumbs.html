@@ -1,0 +1,21 @@
+<div class="crumbs-wrapper">
+	<div class="container">
+		<ul itemscope="" itemtype="http://schema.org/BreadcrumbList" class="crumbs">
+			<li itemscope="" itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+				<a rel="nofollow" itemprop="item" href="/">
+					<span itemprop="name">Главная</span>
+					<meta itemprop="position" content="1">
+				</a>
+			</li>
+			<!-- not format -->
+			@@for (var i = 0; i < list.length; i++) { 
+				<li itemscope="" itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+					<a itemprop="item" href=`+list[i].link+`>
+						<span itemprop="name">`+list[i].title+`</span>
+						<meta itemprop="position" content=`+(i+2) +`>
+					</a>
+				</li>
+			}
+		</ul>
+	</div>
+</div>

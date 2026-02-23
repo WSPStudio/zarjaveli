@@ -1,0 +1,83 @@
+.gallery
+	&__wrapper
+		display: grid
+		grid-template-columns: repeat(12, 1fr)
+
+		border-radius: 16px
+		overflow: hidden
+
+	&__item 
+		position: relative
+		display: flex
+		aspect-ratio: 440/380
+
+		@media (min-width: 576px)
+			grid-column: span 3
+
+		+hov
+			&:after,
+			&:before
+				opacity: 1
+
+		&:after
+			content: ''
+
+			+abs 
+			z-index: 0
+			background: radial-gradient(50% 50% at 50% 50%, rgba(16, 16, 16, 0.32) 0%, rgba(16, 16, 16, 0.4) 100%)
+			opacity: 0
+			+t
+			pointer-events: none
+
+		&:before
+			content: 'Увеличить'
+
+			position: absolute
+			left: 50%
+			top: 59%
+			translate: -50% -50%
+			z-index: 2
+			width: 100%
+			height: 100%
+			display: flex
+			align-items: center
+			justify-content: center
+
+			background: url("data:image/svg+xml,%3Csvg width='56' height='56' viewBox='0 0 56 56' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M22.1667 26.8335H31.5M26.8333 22.1668V31.5002M39.417 39.4802L46.6037 46.6668M44.3333 26.8335C44.3333 31.4748 42.4896 35.926 39.2077 39.2079C35.9258 42.4898 31.4746 44.3335 26.8333 44.3335C22.1921 44.3335 17.7409 42.4898 14.459 39.2079C11.1771 35.926 9.33334 31.4748 9.33334 26.8335C9.33334 22.1922 11.1771 17.741 14.459 14.4591C17.7409 11.1772 22.1921 9.3335 26.8333 9.3335C31.4746 9.3335 35.9258 11.1772 39.2077 14.4591C42.4896 17.741 44.3333 22.1922 44.3333 26.8335Z' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' /%3E%3C/svg%3E") 50% 34% / 56px no-repeat
+			opacity: 0
+
+			+adap('font-size', 20, 16)
+			font-weight: 500
+			pointer-events: none
+
+			+t
+
+			@media (max-width: 1199px)
+				background-position-y: 28%
+				background-size: 40px
+
+			@media (max-width: 767px)
+				top: 65%
+				background-position-y: 20%
+				background-size: 36px
+
+			@media (max-width: 575px)
+				top: 60%
+				+adap('background-position-y', 70, 20)
+				background-size: 32px
+
+		&:nth-child(7n+1),
+		&:nth-child(7n+2),
+		&:nth-child(7n+3) 
+			@media (min-width: 576px)
+				grid-column: span 4
+				aspect-ratio: 586/380
+
+		&-img 
+			width: 100%
+			height: 100%
+			object-fit: cover
+
+	@media (max-width: 575px)
+		&__wrapper
+			grid-template-columns: repeat(2, 1fr)

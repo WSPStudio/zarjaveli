@@ -1,0 +1,554 @@
+@@include('assets/html/head.html', {
+"class" : '"home"'
+})
+
+<!-- Главный экран -->
+<div class="header-main">
+	<div class="slider header-main__slider">
+		<div class="swiper header-main-container">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide">
+					<img src="assets/img/header/1.webp" alt="" loading="eager" fetchpriority="high" decoding="async" pic="991,575">
+				</div>
+				<div class="swiper-slide">
+					<img src="assets/img/header/1.webp" alt="" loading="eager" decoding="async" pic="991,575">
+				</div>
+				<div class="swiper-slide">
+					<img src="assets/img/header/1.webp" alt="" loading="eager" decoding="async" pic="991,575">
+				</div>
+				<div class="swiper-slide">
+					<img src="assets/img/header/1.webp" alt="" loading="eager" decoding="async" pic="991,575">
+				</div>
+			</div>
+		</div>
+		<div class="swiper-navigation slider__navigation header-main__navigation">
+			<button class="slider__arrow slider__prev header-main__prev header-main__arrow" type="button">
+				<svg class="prev-icon" aria-hidden="true">
+					<use xlink:href="assets/img/sprite.svg#prev"></use>
+				</svg>
+			</button>
+			<div class="swiper-pagination slider__pagination header-main__pagination"></div>
+			<button class="slider__arrow slider__next header-main__next header-main__arrow" type="button">
+				<svg class="next-icon" aria-hidden="true">
+					<use xlink:href="assets/img/sprite.svg#next"></use>
+				</svg>
+			</button>
+		</div>
+	</div>
+	<div class="container">
+		<div class="header-main__wrapper">
+			<h1 class="title-2 header-main__title">Аренда банкетного зала</h1>
+			<div class="header-main__subtitle">Для праздничных мероприятий в Москве</div>
+			<div class="header-main__text">
+				<svg class="decor-icon" aria-hidden="true">
+					<use xlink:href="assets/img/sprite.svg#decor"></use>
+				</svg>
+				<span>Настоящая грузинская кухня и уникальная атмосфера</span>
+			</div>
+			<div class="header-main__buttons">
+				<a href="#room" class="button" data-scroll>Выбрать зал</a>
+				<button class="button button_white button_border" type="button" data-modal="modal-call">Получить предложение</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- О нас -->
+<div id="about" class="section section-dark about">
+	<img src="assets/img/about/bg.webp" class="section__bg" alt="" loading="eager" decoding="async" fetchpriority="high" pic="991,575">
+	<div class="container">
+		<div class="section__top">
+			<div class="title-2">О нас</div>
+		</div>
+		<div class="about__wrapper">
+			<div class="wow fadeInUp about__item" data-wow-delay='.2s'>
+				<div class="about__item-icon">
+					<img src="assets/img/about/1.svg" width="61" height="64" alt="" decoding="async">
+				</div>
+				<div class="active-text title-3 about__item-title">2 уютных зала</div>
+				<p class="about__item-text">Идеально для любой компании</p>
+			</div>
+			<div class="wow fadeInUp about__item" data-wow-delay='.3s'>
+				<div class="about__item-icon">
+					<img src="assets/img/about/2.svg" width="62" height="56" alt="" decoding="async">
+				</div>
+				<div class="active-text title-3 about__item-title">До 120 гостей</div>
+				<p class="about__item-text">Комфортное <br> размещение для <br> банкетов</p>
+			</div>
+			<div class="wow fadeInUp about__item" data-wow-delay='.4s'>
+				<div class="about__item-icon">
+					<img src="assets/img/about/3.svg" width="77" height="37" alt="" decoding="async">
+				</div>
+				<div class="active-text title-3 about__item-title">Банкеты и фуршеты</div>
+				<p class="about__item-text">От легкого ужина до грандиозного банкета</p>
+			</div>
+			<div class="wow fadeInUp about__item" data-wow-delay='.5s'>
+				<div class="about__item-icon">
+					<img src="assets/img/about/4.svg" width="53" height="49" alt="" decoding="async">
+				</div>
+				<div class="active-text title-3 about__item-title">Профессиональная сцена, звук и свет</div>
+				<p class="about__item-text">Для ярких шоу и выступлений</p>
+			</div>
+			<div class="wow fadeInUp about__item" data-wow-delay='.6s'>
+				<div class="about__item-icon">
+					<img src="assets/img/about/5.svg" width="53" height="45" alt="" decoding="async">
+				</div>
+				<div class="active-text title-3 about__item-title">Любой формат мероприятий</div>
+				<p class="about__item-text">Настоящая грузинская кухня и уникальная атмосфера</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Наши залы -->
+<div id="room" class="section section-dark room">
+	<img src="assets/img/room/bg.webp" class="section__bg" alt="" loading="lazy" decoding="async" pic="991,575">
+
+	<div class="container">
+		<div class="section__top">
+			<div class="title-2">Наши залы</div>
+		</div>
+		<div class="room__wrapper">
+			<div class="room__item">
+				<div class="slider room__item-slider">
+					<div class="swiper room-container">
+						<div class="swiper-wrapper" data-viewer="room-1">
+							<!-- not format -->
+				@@for(var i = 0; i < 2; i++){ <div class="swiper-slide">
+					<a href="assets/img/room/1.webp">
+						<img src="assets/img/room/1.webp" width="730" height="720" alt="" loading="lazy" decoding="async" pic>
+					</a>
+			</div>
+			<div class="swiper-slide">
+				<a href="assets/img/room/2.webp">
+					<img src="assets/img/room/2.webp" width="730" height="720" alt="" loading="lazy" decoding="async" pic>
+				</a>
+			</div>
+			}
+		</div>
+	</div>
+	<div class="swiper-pagination slider__pagination room__pagination"></div>
+</div>
+<div class="room__item-col">
+	<div class="room__item-title">Малый банкетный зал</div>
+	<div class="room__item-text">Стильное пространство для мероприятий, где важна атмосфера уюта, живого общения, а также наличие большой сцены и качественного звука.</div>
+	<div class="room__item-list room-list">
+		<div class="wow fadeInUp room-list__item" data-wow-delay='.2s'>
+			<div class="room-list__item-icon">
+				<svg class="peoples-icon" aria-hidden="true">
+					<use xlink:href="assets/img/sprite.svg#peoples"></use>
+				</svg>
+			</div>
+			<span>Вместимость:</span>
+			<p>85–105 гостей</p>
+		</div>
+		<div class="wow fadeInUp room-list__item" data-wow-delay='.25s'>
+			<div class="room-list__item-icon">
+				<svg class="scene-icon" aria-hidden="true">
+					<use xlink:href="assets/img/sprite.svg#scene"></use>
+				</svg>
+			</div>
+			<span>Сцена:</span>
+			<p>4×6 м</p>
+		</div>
+		<div class="wow fadeInUp room-list__item" data-wow-delay='.3s'>
+			<div class="room-list__item-icon">
+				<svg class="microphone-icon" aria-hidden="true">
+					<use xlink:href="assets/img/sprite.svg#microphone"></use>
+				</svg>
+			</div>
+			<p>Профессиональное звуковое и световое оборудование</p>
+		</div>
+		<div class="wow fadeInUp room-list__item" data-wow-delay='.35s'>
+			<div class="room-list__item-icon">
+				<svg class="restaurant-icon" aria-hidden="true">
+					<use xlink:href="assets/img/sprite.svg#restaurant"></use>
+				</svg>
+			</div>
+			<p>Возможность проведения банкета и фуршета <br>
+				концерт - свадьба - корпоратив – день рождения - частная вечеринка - презентация</p>
+		</div>
+	</div>
+	<div class="room__item-buttons">
+		<button class="button button_border" type="button" data-modal="modal-call">Получить предложение</button>
+		<button class="button button_border button_white" data-viewer-open="room-1">Смотреть фото</button>
+	</div>
+</div>
+</div>
+<div class="room__item">
+	<div class="slider room__item-slider">
+		<div class="swiper room-container">
+			<div class="swiper-wrapper" data-viewer="room-2">
+				<!-- not format -->
+							@@for(var i = 0; i < 2; i++){ <div class="swiper-slide">
+								<a href="assets/img/room/2.webp">
+									<img src="assets/img/room/2.webp" width="730" height="720" alt="" loading="lazy" decoding="async" pic>
+								</a>
+						</div>
+						<div class="swiper-slide">
+							<a href="assets/img/room/1.webp">
+								<img src="assets/img/room/1.webp" width="730" height="720" alt="" loading="lazy" decoding="async" pic>
+							</a>
+						</div>
+						}
+					</div>
+				</div>
+				<div class="swiper-pagination slider__pagination room__pagination"></div>
+			</div>
+			<div class="room__item-col">
+				<div class="room__item-title">Основной зал</div>
+				<div class="room__item-text">Просторный зал с изящным интерьером. Создан для любых масштабных событий, легко адаптируется под формат мероприятия.</div>
+				<div class="room__item-list room-list">
+					<div class="wow fadeIn room-list__item" data-wow-delay='.2s'>
+						<div class="room-list__item-icon">
+							<svg class="peoples-icon" aria-hidden="true">
+								<use xlink:href="assets/img/sprite.svg#peoples"></use>
+							</svg>
+						</div>
+						<span>Вместимость:</span>
+						<p>105–120 гостей</p>
+					</div>
+					<div class="wow fadeIn room-list__item" data-wow-delay='.25s'>
+						<div class="room-list__item-icon">
+							<svg class="scene-icon" aria-hidden="true">
+								<use xlink:href="assets/img/sprite.svg#scene"></use>
+							</svg>
+						</div>
+						<span>Сцена:</span>
+						<p>5 м²</p>
+					</div>
+					<div class="wow fadeIn room-list__item" data-wow-delay='.3s'>
+						<div class="room-list__item-icon">
+							<svg class="microphone-icon" aria-hidden="true">
+								<use xlink:href="assets/img/sprite.svg#microphone"></use>
+							</svg>
+						</div>
+						<p>Профессиональное звуковое и световое оборудование</p>
+					</div>
+					<div class="wow fadeIn room-list__item" data-wow-delay='.35s'>
+						<div class="room-list__item-icon">
+							<svg class="restaurant-icon" aria-hidden="true">
+								<use xlink:href="assets/img/sprite.svg#restaurant"></use>
+							</svg>
+						</div>
+						<p>Возможность проведения банкета и фуршета <br>
+							концерт - свадьба - корпоратив – день рождения - частная вечеринка - презентация</p>
+					</div>
+				</div>
+				<div class="room__item-buttons">
+					<button class="button button_border" type="button" data-modal="modal-call">Получить предложение</button>
+					<button class="button button_border button_white" data-viewer-open="room-2">Смотреть фото</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+
+<!-- Форматы мероприятий -->
+<div id="format" class="section section-dark format">
+	<img src="assets/img/format/bg.webp" class="section__bg" alt="" loading="lazy" decoding="async" pic="991,575">
+	<div class="container">
+		<div class="section__top">
+			<div class="title-2">Форматы мероприятий</div>
+		</div>
+		<div class="format__wrapper">
+			<div class="wow fadeIn format__item" data-wow-delay='.2s'>
+				<img src="assets/img/format/1.webp" class="format__item-img" width="593" height="372" alt="" loading="lazy" decoding="async" pic="400">
+				<div class="format__item-content">
+					<div class="format__item-title">Свадьбы</div>
+				</div>
+			</div>
+			<div class="wow fadeIn format__item" data-wow-delay='.3s'>
+				<img src="assets/img/format/2.webp" class="format__item-img" width="593" height="372" alt="" loading="lazy" decoding="async" pic="400">
+				<div class="format__item-content">
+					<div class="format__item-title">Дни рождения и юбилеи</div>
+				</div>
+			</div>
+			<div class="wow fadeIn format__item" data-wow-delay='.4s'>
+				<img src="assets/img/format/3.webp" class="format__item-img" width="593" height="372" alt="" loading="lazy" decoding="async" pic="400">
+				<div class="format__item-content">
+					<div class="format__item-title">Концерты и выступления</div>
+				</div>
+			</div>
+			<div class="wow fadeIn format__item" data-wow-delay='.2s'>
+				<img src="assets/img/format/4.webp" class="format__item-img" width="593" height="372" alt="" loading="lazy" decoding="async" pic="400">
+				<div class="format__item-content">
+					<div class="format__item-title">Корпоративы и <br> тимбилдинги</div>
+				</div>
+			</div>
+			<div class="wow fadeIn format__item" data-wow-delay='.3s'>
+				<img src="assets/img/format/5.webp" class="format__item-img" width="593" height="372" alt="" loading="lazy" decoding="async" pic="400">
+				<div class="format__item-content">
+					<div class="format__item-title">Выпускные</div>
+				</div>
+			</div>
+			<div class="wow fadeIn format__item" data-wow-delay='.4s'>
+				<img src="assets/img/format/6.webp" class="format__item-img" width="593" height="372" alt="" loading="lazy" decoding="async" pic="400">
+				<div class="format__item-content">
+					<div class="format__item-title">Презентации и PR-ивенты</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Почему -->
+<div id="why" class="section section-dark why">
+	<img src="assets/img/why/bg.webp" class="section__bg" alt="" loading="lazy" decoding="async" pic="991,575">
+	<div class="container">
+		<div class="section__top">
+			<div class="title-2">Почему стоит провести мероприятие у нас</div>
+		</div>
+		<div class="why__wrapper">
+			<div class="wow fadeInUp why__item" data-wow-delay='.2s'>
+				<div class="why__item-icon">
+					<img src="assets/img/why/1.svg" width="76" height="42" alt="" loading="lazy" decoding="async">
+				</div>
+				<div class="title-3 why__item-title">Профессиональная команда</div>
+				<p class="why__item-text">Внимательные администраторы и официанты, грамотная техническая поддержка</p>
+			</div>
+			<div class="wow fadeInUp why__item" data-wow-delay='.3s'>
+				<div class="why__item-icon">
+					<img src="assets/img/why/2.svg" width="56" height="69" alt="" loading="lazy" decoding="async">
+				</div>
+				<div class="title-3 why__item-title">Индивидуальное
+					меню</div>
+				<p class="why__item-text">Банкетные и фуршетные форматы с акцентом на грузинскую кухню</p>
+			</div>
+			<div class="wow fadeInUp why__item" data-wow-delay='.4s'>
+				<div class="why__item-icon">
+					<img src="assets/img/why/3.svg" width="47" height="61" alt="" loading="lazy" decoding="async">
+				</div>
+				<div class="title-3 why__item-title">Сцена, звук <br>
+					и свет</div>
+				<p class="why__item-text">Подходит для живых выступлений артистов, ведущих и шоу-программ</p>
+			</div>
+			<div class="wow fadeInUp why__item" data-wow-delay='.5s'>
+				<div class="why__item-icon">
+					<img src="assets/img/why/4.svg" width="69" height="69" alt="" loading="lazy" decoding="async">
+				</div>
+				<div class="title-3 why__item-title">Гибкость <br>
+					форматов</div>
+				<p class="why__item-text">От уютного камерного праздника до масштабного события</p>
+			</div>
+			<div class="wow fadeInUp why__item" data-wow-delay='.6s'>
+				<div class="why__item-icon">
+					<img src="assets/img/why/5.svg" width="52" height="56" alt="" loading="lazy" decoding="async">
+				</div>
+				<div class="title-3 why__item-title">Удобная <br> локация</div>
+				<p class="why__item-text">Легко добраться из любой части города пешком или на машине</p>
+			</div>
+		</div>
+		<div class="section-top flex justify-center">
+			<button class="button button_border" type="button" data-modal="modal-call">Рассчитать стоимость</button>
+		</div>
+	</div>
+</div>
+
+<!-- Информация -->
+<div id="info" class="section section-dark info">
+	<img src="assets/img/info/bg.webp" class="section__bg" alt="" loading="lazy" decoding="async" pic="991,575">
+	<div class="container">
+		<div class="info__wrapper">
+			<div class="info__left">
+				<img src="assets/img/info/1.webp" class="info__img" width="820" height="440" alt="" loading="lazy" decoding="async" pic>
+			</div>
+			<div class="info__right">
+				<div class="title-2 title_not-decor title_left">Банкетные залы «Заржавели» – когда праздник, как в Грузии</div>
+				<div class="info__text">
+					<p>Большой стол, живая музыка, тосты, смех и домашняя атмосфера. <br> Грузинская кухня создана для праздников – щедрая, яркая и объединяющая.</p>
+					<p>Мы создаем обстановку, в которой гости чувствуют себя желанными, а хозяева мероприятия могут расслабиться и наслаждаться своим праздником.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Галерея -->
+<div id="gallery" class="section section-dark gallery">
+	<img src="assets/img/gallery/bg.webp" class="section__bg" alt="" loading="lazy" decoding="async" pic="991,575">
+	<div class="container">
+		<div class="section__top">
+			<div class="title-2">Посмотрите, как проходят наши мероприятия</div>
+		</div>
+		<div class="gallery__wrapper" data-viewer>
+			<a href="assets/img/gallery/1.avif" class="gallery__item">
+				<img src="assets/img/gallery/1_min.webp" class="gallery__item-img" width="587" height="380" pic="400" alt="" loading="lazy" decoding="async">
+			</a>
+			<a href="assets/img/gallery/2.avif" class="gallery__item">
+				<img src="assets/img/gallery/2_min.webp" class="gallery__item-img" width="587" height="380" pic="400" alt="" loading="lazy" decoding="async">
+			</a>
+			<a href="assets/img/gallery/3.avif" class="gallery__item">
+				<img src="assets/img/gallery/3_min.webp" class="gallery__item-img" width="587" height="380" pic="400" alt="" loading="lazy" decoding="async">
+			</a>
+			<a href="assets/img/gallery/4.avif" class="gallery__item">
+				<img src="assets/img/gallery/4_min.webp" class="gallery__item-img" width="440" height="380" pic="400" alt="" loading="lazy" decoding="async">
+			</a>
+			<a href="assets/img/gallery/5.avif" class="gallery__item">
+				<img src="assets/img/gallery/5_min.webp" class="gallery__item-img" width="440" height="380" pic="400" alt="" loading="lazy" decoding="async">
+			</a>
+			<a href="assets/img/gallery/6.avif" class="gallery__item">
+				<img src="assets/img/gallery/6_min.webp" class="gallery__item-img" width="440" height="380" pic="400" alt="" loading="lazy" decoding="async">
+			</a>
+			<a href="assets/img/gallery/7.avif" class="gallery__item">
+				<img src="assets/img/gallery/7_min.webp" class="gallery__item-img" width="440" height="380" pic="400" alt="" loading="lazy" decoding="async">
+			</a>
+			<a href="assets/img/gallery/8.avif" class="gallery__item">
+				<img src="assets/img/gallery/8_min.webp" class="gallery__item-img" width="587" height="380" pic="400" alt="" loading="lazy" decoding="async">
+			</a>
+			<a href="assets/img/gallery/9.avif" class="gallery__item">
+				<img src="assets/img/gallery/9_min.webp" class="gallery__item-img" width="587" height="380" pic="400" alt="" loading="lazy" decoding="async">
+			</a>
+			<a href="assets/img/gallery/10.avif" class="gallery__item">
+				<img src="assets/img/gallery/10_min.webp" class="gallery__item-img" width="587" height="380" pic="400" alt="" loading="lazy" decoding="async">
+			</a>
+
+
+			<!-- Скрытые -->
+			<a href="assets/img/gallery/4.avif" class="gallery__item" style="display: none">
+				<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="assets/img/gallery/4_min.webp" class="gallery__item-img" width="440" height="380" pic="400" alt="" loading="lazy" decoding="async">
+			</a>
+			<a href="assets/img/gallery/5.avif" class="gallery__item" style="display: none">
+				<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="assets/img/gallery/5_min.webp" class="gallery__item-img" width="440" height="380" pic="400" alt="" loading="lazy" decoding="async">
+			</a>
+			<a href="assets/img/gallery/6.avif" class="gallery__item" style="display: none">
+				<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="assets/img/gallery/6_min.webp" class="gallery__item-img" width="440" height="380" pic="400" alt="" loading="lazy" decoding="async">
+			</a>
+			<a href="assets/img/gallery/7.avif" class="gallery__item" style="display: none">
+				<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="assets/img/gallery/7_min.webp" class="gallery__item-img" width="440" height="380" pic="400" alt="" loading="lazy" decoding="async">
+			</a>
+			<a href="assets/img/gallery/8.avif" class="gallery__item" style="display: none">
+				<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="assets/img/gallery/8_min.webp" class="gallery__item-img" width="587" height="380" pic="400" alt="" loading="lazy" decoding="async">
+			</a>
+			<a href="assets/img/gallery/9.avif" class="gallery__item" style="display: none">
+				<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="assets/img/gallery/9_min.webp" class="gallery__item-img" width="587" height="380" pic="400" alt="" loading="lazy" decoding="async">
+			</a>
+			<a href="assets/img/gallery/10.avif" class="gallery__item" style="display: none">
+				<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="assets/img/gallery/10_min.webp" class="gallery__item-img" width="587" height="380" pic="400" alt="" loading="lazy" decoding="async">
+			</a>
+			<a href="assets/img/gallery/4.avif" class="gallery__item" style="display: none">
+				<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="assets/img/gallery/4_min.webp" class="gallery__item-img" width="440" height="380" pic="400" alt="" loading="lazy" decoding="async">
+			</a>
+			<a href="assets/img/gallery/5.avif" class="gallery__item" style="display: none">
+				<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="assets/img/gallery/5_min.webp" class="gallery__item-img" width="440" height="380" pic="400" alt="" loading="lazy" decoding="async">
+			</a>
+			<a href="assets/img/gallery/6.avif" class="gallery__item" style="display: none">
+				<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="assets/img/gallery/6_min.webp" class="gallery__item-img" width="440" height="380" pic="400" alt="" loading="lazy" decoding="async">
+			</a>
+			<a href="assets/img/gallery/7.avif" class="gallery__item" style="display: none">
+				<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="assets/img/gallery/7_min.webp" class="gallery__item-img" width="440" height="380" pic="400" alt="" loading="lazy" decoding="async">
+			</a>
+			<a href="assets/img/gallery/8.avif" class="gallery__item" style="display: none">
+				<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="assets/img/gallery/8_min.webp" class="gallery__item-img" width="587" height="380" pic="400" alt="" loading="lazy" decoding="async">
+			</a>
+			<a href="assets/img/gallery/9.avif" class="gallery__item" style="display: none">
+				<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="assets/img/gallery/9_min.webp" class="gallery__item-img" width="587" height="380" pic="400" alt="" loading="lazy" decoding="async">
+			</a>
+			<a href="assets/img/gallery/10.avif" class="gallery__item" style="display: none">
+				<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="assets/img/gallery/10_min.webp" class="gallery__item-img" width="587" height="380" pic="400" alt="" loading="lazy" decoding="async">
+			</a>
+		</div>
+		<div class="section-top flex justify-center">
+			<button class="button button_white button_border gallery__button" type="button">Смотреть еще</button>
+		</div>
+	</div>
+</div>
+
+<!-- Условия аренды -->
+<div id="conditions" class="section section-dark conditions">
+	<img src="assets/img/conditions/bg.webp" class="section__bg" alt="" loading="lazy" decoding="async" pic="991,575">
+	<div class="container">
+		<div class="section__top">
+			<div class="title-2">Условия аренды Zarjavelli</div>
+		</div>
+		<div class="conditions__wrapper">
+			<div class="conditions__left">
+				<img src="assets/img/conditions/1.webp" class="conditions__img" width="820" height="440" alt="" loading="lazy" decoding="async" pic>
+			</div>
+			<div class="conditions__right">
+				<ul class="conditions__list">
+					<li class="wow fadeInUp" data-wow-delay=".2s">Минимальный срок — 1 сутки</li>
+					<li class="wow fadeInUp" data-wow-delay=".25s">Аванс 100% + залог ГСМ и мелкий ремонт — за арендатора</li>
+					<li class="wow fadeInUp" data-wow-delay=".3s">Возврат в чистом виде и без повреждений</li>
+					<li class="wow fadeInUp" data-wow-delay=".35s">От 24 часов</li>
+					<li class="wow fadeInUp" data-wow-delay=".4s">Оплата заранее</li>
+					<li class="wow fadeInUp" data-wow-delay=".45s">Залог возвращается</li>
+					<li class="wow fadeInUp" data-wow-delay=".5s">Без скрытых комиссий</li>
+					<li class="wow fadeInUp" data-wow-delay=".55s">Используй аккуратно</li>
+				</ul>
+				<button class="button button_border" type="button" data-modal="modal-call">Отправить заявку</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Контакты -->
+<div id="contact" class="section section-dark contact">
+	<img src="assets/img/contact/bg.webp" class="section__bg" alt="" loading="lazy" decoding="async" pic="991,575">
+	<div class="container">
+		<div class="section__top">
+			<div class="title-2">Наши контакты</div>
+		</div>
+		<div class="contact__wrapper">
+			<div class="contact__block">
+				<div class="title-3 contact__block-title">Контакты</div>
+				<div class="contact__items">
+					<div class="contact__item">
+						<svg class="location-icon" aria-hidden="true">
+							<use xlink:href="assets/img/sprite.svg#location"></use>
+						</svg>
+						<span>г. Москва, <br> Каширский пр. 25, корп. 4</span>
+					</div>
+					<div class="call contact__item">
+						<svg class="phone-icon" aria-hidden="true">
+							<use xlink:href="assets/img/sprite.svg#phone"></use>
+						</svg>
+						<a href="tel:+77000000000" class="hover-active">+7 (700) 000-00-00</a>
+						<div class="social contact__social">
+							<a href="https://t.me/+70000000000" class="social__item" target="_blank">
+								<svg class="telegram-icon" aria-hidden="true">
+									<use xlink:href="assets/img/sprite.svg#telegram"></use>
+								</svg>
+							</a>
+							<a href="https://max.ru/+70000000000" class="social__item" target="_blank">
+								<svg class="max-icon" aria-hidden="true">
+									<use xlink:href="assets/img/sprite.svg#max"></use>
+								</svg>
+							</a>
+						</div>
+					</div>
+					<div class="contact__item">
+						<svg class="clock-icon" aria-hidden="true">
+							<use xlink:href="assets/img/sprite.svg#clock"></use>
+						</svg>
+						<span>
+							ВС-ЧТ с 11.00 до 23.00 <br>
+							ПТ-СБ с 11.00 до 24.00
+						</span>
+					</div>
+				</div>
+				<div class="form contact__form">
+					<form>
+						<div class="form__fields">
+							<input class="input" type="text" name="name" placeholder="Ваше имя">
+							<input class="input" type="tel" name="phone" placeholder="Номер телефона" required>
+							<textarea class="textarea" name="message" cols="30" rows="5" placeholder="Сообщение"></textarea>
+							<label class="checkbox">
+								<input class="checkbox__input" type="checkbox" required checked>
+								<span class="checkbox__text">Я соглашаюсь с <a href="#" class="active-text hover-underline" target="_blank">пользовательским соглашением</a> и <a href="#" class="active-text hover-underline" target="_blank">политикой конфиденциальности</a></span>
+							</label>
+							<button class="button submit">Отправить</button>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="map-wrapper contact__map">
+				<div class="loader loader-default"></div>
+				<div id="map" class="map"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+@@include('assets/html/foot.html')
