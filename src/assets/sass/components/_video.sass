@@ -1,0 +1,95 @@
+$video-button-size: 60px
+$video-button-min-size: 32px
+
+$video-button-icon-size: 20px
+$video-button-icon-min-size: 16px
+
+$video-button-icon: ''
+// $video-button-icon: '../img/icons/play.svg'
+
+@function get-video-url($icon)
+	@if $icon == ''
+		@return url("data:image/svg+xml,%3Csvg width='320' height='384' xmlns='http://www.w3.org/2000/svg'%3E%3Cg%3E%3Ctitle%3ELayer 1%3C/title%3E%3Cpath id='svg_1' d='m309.20001,168.89999l-278.40001,-165.7c-3.4,-2 -6.9,-3.2 -10.9,-3.2c-10.9,0 -19.8,9 -19.8,20l-0.1,0l0,344l0.1,0c0,11 8.9,20 19.8,20c4.1,0 7.5,-1.39999 11.2,-3.39999l278.10001,-165.5c6.60001,-5.5 10.79999,-13.80002 10.79999,-23.10001s-4.19998,-17.5 -10.79999,-23.10001z'/%3E%3C/g%3E%3C/svg%3E")
+	@else 
+		@return url(#{$icon})
+
+	
+	
+.video 
+	position: relative
+	display: flex
+		
+	aspect-ratio: 16/9	
+
+	&__thumbnail
+		width: 100%
+		height: 100%
+		object-fit: cover 
+
+	&__play
+		position: absolute
+		left: 50%
+		top: 50%
+		translate: -50% -50%
+		z-index: 2
+		width: 100%
+		height: 100%
+
+		+hov
+			&:before
+				background: $active
+
+			&:after
+				background: #fff
+
+		&:before,
+		&:after
+			content: ''
+			position: absolute
+			top: 50%
+			z-index: 2
+			translate: -50% -50%
+			+t
+
+		&:before
+			left: 50%
+			width: clamp($video-button-min-size, 16%, $video-button-size)
+			aspect-ratio: 1
+
+			background: #fff
+			border-radius: 50% 
+
+		&:after
+			left: calc(50% + 1px)
+			width: clamp($video-button-icon-min-size, 8%, $video-button-icon-size)
+			aspect-ratio: 1
+
+			+mask(get-video-url($video-button-icon) center / contain no-repeat, $active)
+
+	iframe, video
+		width: 100%
+		height: 100%
+
+		object-fit: cover
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+

@@ -20,7 +20,6 @@
 
 		text-align: center
 
-		cursor: pointer
 		overflow: hidden
 
 		+t
@@ -82,15 +81,22 @@
 		
 		&-text 
 			+adap('font-size', 20, 16)
-			font-weight: 500
-		
 
 	@media (max-width: 767px)
 		&__wrapper
 			display: grid
-			grid-template-columns: 100%
+			grid-template-columns: repeat(2, 1fr)
 
 		&__item 
+			&:nth-child(odd)
+				&:last-child
+					grid-column: 1/-1
+					
 			&-text 
 				br
 					display: none
+				
+
+	@media (max-width: 575px)
+		&__wrapper
+			grid-template-columns: 100%

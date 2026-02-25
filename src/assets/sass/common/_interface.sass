@@ -46,6 +46,7 @@ body
 		+adap('gap', 40, 16)
 		+title-2
 		text-align: center
+		text-wrap: balance
 
 		@media (min-width: 576px)
 			&:before,
@@ -83,6 +84,7 @@ body
 
 	
 .button 
+	position: relative
 	display: inline-flex
 	justify-content: center
 	align-items: center
@@ -98,6 +100,28 @@ body
 	color: $bg
 
 	white-space: nowrap
+	overflow: hidden
+
+	&_shine
+		&:after
+			content: ''
+			position: absolute
+			top: 0
+			left: -150%
+			width: 60%
+			height: 100%
+
+			background: linear-gradient(120deg, rgba(#fff, 0) 0%, rgba(#fff, .4) 50%, rgba(#fff, 0) 100%)
+
+			transform: skewX(-20deg)
+			animation: buttonShine 3s ease-in-out infinite
+
+		@keyframes buttonShine
+			0%
+				left: -150%
+
+			50%, 100%
+				left: 150%
 
 	+hov
 		background: dark($active, 12%)

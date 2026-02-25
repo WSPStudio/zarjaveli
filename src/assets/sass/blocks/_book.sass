@@ -1,0 +1,177 @@
+.book 
+	&__content
+		display: grid
+		+adap('gap', 40, 20)
+		justify-items: center
+
+	&__wrapper
+		display: flex
+		flex-wrap: wrap
+		gap: 20px
+		counter-reset: number
+
+	&__item
+		position: relative
+		flex: 1 0 336px
+		max-width: calc(50% - 10px)
+		+adap('padding-block', 40, 20, 1 , $min: true)
+		+adap('padding-inline', 40, 12, 1 , $min: true)
+
+		border: 2px solid rgba(255, 255, 255, 0.12)
+		+adap('border-radius', 16, 12)
+
+		overflow: hidden
+		+t 
+
+		+hov
+			border-color: $active
+
+			&:after
+				background: $active
+
+		&:before
+			content: counter(number)
+			display: block
+			counter-increment: number
+
+			+adap('margin-bottom', 20, 12)
+
+			+adap('font-size', 40, 24)
+			color: $active
+			line-height: 1.2
+			font-weight: 700
+
+		&:after
+			content: ''
+			position: absolute
+			right: 0
+			bottom: 0
+
+			translate: 50% 50%
+			rotate: -45deg
+				
+			+adap('width', 40, 24)
+			+adap('height', 40, 24)
+
+			background: rgba(255, 255, 255, 0.12)
+			+t
+	
+		&-title 
+			margin-bottom: 12px
+	
+	&__text 
+		+adap('font-size', 20, 16)
+		color: rgba(#fff, .8)
+		text-wrap: balance
+		text-align: center
+	
+	
+	@media (max-width: 1199px)
+		&__item 
+			max-width: 100%
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

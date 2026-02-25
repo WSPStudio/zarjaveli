@@ -17,26 +17,26 @@
 		overflow: hidden
 
 		&:nth-child(odd)
-			+adap('border-top-left-radius', 380, 20, 1 , $min: true)
-			+adap('border-top-right-radius', 40, 20, 1 , $min: true)
-			+adap('border-bottom-right-radius', 380, 20, 1 , $min: true)
+			+adap('border-top-left-radius', 380, 20  , $widthTo: 768, $min: true)
+			+adap('border-top-right-radius', 40, 20  , $widthTo: 768, $min: true)
+			+adap('border-bottom-right-radius', 380, 20  , $widthTo: 768, $min: true)
 			border-bottom-left-radius: 20px
 			
 			.room__item-slider
-				+adap('border-top-left-radius', 360, 12, 1 , $min: true)
-				+adap('border-top-right-radius', 360, 12, 1 , $min: true)
+				+adap('border-top-left-radius', 360, 12  , $widthTo: 768, $min: true)
+				+adap('border-top-right-radius', 360, 12  , $widthTo: 768, $min: true)
 				border-bottom-left-radius: 12px
 				border-bottom-right-radius: 12px
 
 		&:nth-child(even)
-			+adap('border-top-left-radius', 40, 20, 1 , $min: true)
-			+adap('border-top-right-radius', 380, 20, 1 , $min: true)
-			+adap('border-bottom-left-radius', 380, 20, 1 , $min: true)
+			+adap('border-top-left-radius', 40, 20  , $widthTo: 768, $min: true)
+			+adap('border-top-right-radius', 380, 20  , $widthTo: 768, $min: true)
+			+adap('border-bottom-left-radius', 380, 20  , $widthTo: 768, $min: true)
 			border-bottom-right-radius: 20px
 			
 			.room__item-slider
-				+adap('border-bottom-left-radius', 360, 12, 1 , $min: true)
-				+adap('border-bottom-right-radius', 360, 12, 1 , $min: true)
+				+adap('border-bottom-left-radius', 360, 12  , $widthTo: 768, $min: true)
+				+adap('border-bottom-right-radius', 360, 12  , $widthTo: 768, $min: true)
 				border-top-left-radius: 12px
 				border-top-right-radius: 12px
 		

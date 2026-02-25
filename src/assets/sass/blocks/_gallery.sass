@@ -11,6 +11,8 @@
 		display: flex
 		aspect-ratio: 440/380
 
+		overflow: hidden
+
 		@media (min-width: 576px)
 			grid-column: span 3
 
@@ -18,6 +20,9 @@
 			&:after,
 			&:before
 				opacity: 1
+
+			.gallery__item-img 
+				scale: 1.015
 
 		&:after
 			content: ''
@@ -77,6 +82,7 @@
 			width: 100%
 			height: 100%
 			object-fit: cover
+			+t
 
 	@media (max-width: 575px)
 		&__wrapper

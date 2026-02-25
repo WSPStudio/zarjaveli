@@ -18,7 +18,6 @@
 		aspect-ratio: 573/372
 		+t
 		overflow: hidden
-		cursor: pointer
 
 		&:first-child
 			border-top-left-radius: 16px
@@ -44,6 +43,9 @@
 				opacity: 0
 
 			.format__item
+				&-img
+					scale: 1.015
+				
 				&-title 
 					margin-left: 0
 
@@ -73,6 +75,7 @@
 			height: 100%
 
 			object-fit: cover
+			+t
 			
 		&-content 
 			position: absolute

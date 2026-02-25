@@ -1,5 +1,4 @@
 .footer 
-
 	&__top 
 		display: grid
 		grid-template-columns: 1fr 2fr
@@ -69,16 +68,18 @@
 
 	@media (max-width: 575px)
 		&__top 
-			grid-template-columns: 100%
+			display: flex
+			flex-wrap: wrap
+			justify-content: space-between
+
 
 		&__logo 
 			img 
 				+adap('width', 172, minusPercent(30, 172), 575)
 				+adap('height', 36, minusPercent(30, 36), 575)
 
-		&__left 
-			display: flex
-			justify-content: space-between
+		&__menu
+			grid-template-columns: 100%
 
 		&__bottom
 			grid-template-columns: 100%

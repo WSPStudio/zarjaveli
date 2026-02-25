@@ -137,3 +137,36 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+// Параллакс рамки
+const parallaxImages = document.querySelectorAll(".info__left, .conditions__left");
+
+if (parallaxImages) {
+  const maxShift = 20;
+
+  parallaxImages.forEach((item) => {
+    item.addEventListener("mousemove", (e) => {
+      const rect = item.getBoundingClientRect();
+
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+
+      const offsetX = e.clientX - rect.left;
+      const offsetY = e.clientY - rect.top;
+
+      const percentX = (offsetX - centerX) / centerX;
+      const percentY = (offsetY - centerY) / centerY;
+
+      const moveX = -percentX * maxShift;
+      const moveY = -percentY * maxShift;
+
+      item.style.setProperty("--moveX", `${moveX}px`);
+      item.style.setProperty("--moveY", `${moveY}px`);
+    });
+
+    item.addEventListener("mouseleave", () => {
+      item.style.setProperty("--moveX", "0px");
+      item.style.setProperty("--moveY", "0px");
+    });
+  });
+}

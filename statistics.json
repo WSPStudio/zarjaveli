@@ -3114,23 +3114,78 @@
       "date": "23.02.2026",
       "start": 1771841102042,
       "end": 1771841102042
+    },
+    {
+      "date": "23.02.2026",
+      "start": 1771843951644,
+      "end": 1771843951644
+    },
+    {
+      "date": "24.02.2026",
+      "start": 1771921050221,
+      "end": 1771921050221
+    },
+    {
+      "date": "24.02.2026",
+      "start": 1771921072927,
+      "end": 1771921072927
+    },
+    {
+      "date": "24.02.2026",
+      "start": 1771921106156,
+      "end": 1771921106156
+    },
+    {
+      "date": "24.02.2026",
+      "start": 1771921161078,
+      "end": 1771921161078
+    },
+    {
+      "date": "24.02.2026",
+      "start": 1771921189996,
+      "end": 1771921189996
+    },
+    {
+      "date": "24.02.2026",
+      "start": 1771921228926,
+      "end": 1771921228926
+    },
+    {
+      "date": "24.02.2026",
+      "start": 1771921239619,
+      "end": 1771921239619
+    },
+    {
+      "date": "24.02.2026",
+      "start": 1771942329967,
+      "end": 1771942329967
+    },
+    {
+      "date": "24.02.2026",
+      "start": 1771943702448,
+      "end": 1771943702448
+    },
+    {
+      "date": "24.02.2026",
+      "start": 1771943791579,
+      "end": 1771943791579
     }
   ],
   "files": {
     "style.sass": 2,
-    "index.html": 574,
-    "_footer.sass": 55,
-    "script.js": 65,
+    "index.html": 624,
+    "_footer.sass": 70,
+    "script.js": 72,
     "showmore.js": 2,
     "fixedmenu.js": 1,
-    "_about.sass": 84,
+    "_about.sass": 100,
     "_news.sass": 1,
-    "_header.sass": 350,
-    "components.sass": 23,
+    "_header.sass": 445,
+    "components.sass": 24,
     "head.html": 99,
     "common.sass": 24,
-    "blocks.sass": 6,
-    "_default.sass": 57,
+    "blocks.sass": 8,
+    "_default.sass": 58,
     "_mixins.sass": 26,
     "front-page.php": 4,
     "scrollbar.js": 13,
@@ -3143,12 +3198,12 @@
     "spoller.js": 13,
     "_select.sass": 38,
     "select.js": 72,
-    "foot.html": 99,
-    "components.js": 13,
+    "foot.html": 105,
+    "components.js": 14,
     "tab.js": 1,
     "variables.js": 4,
     "helpers.js": 1,
-    "_modal.sass": 14,
+    "_modal.sass": 17,
     "popups.html": 4,
     "modals.html": 15,
     "modal.js": 57,
@@ -3160,7 +3215,7 @@
     "context.js": 4,
     "_context.sass": 1,
     "animation.js": 1,
-    "header.html": 68,
+    "header.html": 70,
     "checks.js": 1,
     "_form.sass": 22,
     "_switch.sass": 1,
@@ -3169,19 +3224,22 @@
     "callback.html": 3,
     "_callback.sass": 4,
     "news-wrapper.html": 10,
-    "footer.html": 23,
-    "_interface.sass": 65,
+    "footer.html": 25,
+    "_interface.sass": 76,
     "_variables.sass": 16,
-    "_format.sass": 131,
-    "_why.sass": 16,
-    "_gallery.sass": 91,
-    "_info.sass": 38,
-    "_conditions.sass": 12,
+    "_format.sass": 140,
+    "_why.sass": 39,
+    "_gallery.sass": 93,
+    "_info.sass": 49,
+    "_conditions.sass": 13,
     "_map.sass": 1,
-    "_contact.sass": 62,
-    "_map.scss": 20,
-    "_room.sass": 89,
-    "_slider.sass": 15
+    "_contact.sass": 64,
+    "_map.scss": 40,
+    "_room.sass": 91,
+    "_slider.sass": 15,
+    "_book.sass": 50,
+    "video.js": 25,
+    "_video.sass": 1
   },
   "sizes": [],
   "pages": [],

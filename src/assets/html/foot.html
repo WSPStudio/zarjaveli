@@ -23,10 +23,34 @@
 			myMap = new ymaps.Map(id, {
 				center: [locationX, locationY - mapOffset],
 				zoom: 14,
-				controls: ['largeMapDefaultSet'],
+				controls: []
 			}, {
 				searchControlProvider: 'yandex#search'
 			});
+
+			const zoomControl = new ymaps.control.ZoomControl({
+				float: 'none'
+			});
+
+			myMap.controls.add(zoomControl, {
+				position: { right: 10, top: 100 }
+			});
+
+			function positionZoomCenter() {
+				const container = document.getElementById(id);
+				if (!container || !zoomControl) return;
+
+				const h = container.clientHeight;
+				const zoomHeight = 206;
+
+				zoomControl.options.set('position', {
+					right: 10,
+					top: (h / 2 - zoomHeight / 2) + 'px'
+				});
+			}
+
+			positionZoomCenter();
+			window.addEventListener('resize', positionZoomCenter);
 
 			for (let i = 0; i < address.length; i++) {
 				myPlacemarkTemp = new ymaps.Placemark(address[i][0].split(','), {
@@ -42,17 +66,14 @@
 			}
 
 			if (address.length > 1) {
-				// Автомасштаб меток
 				myMap.setBounds(myMap.geoObjects.getBounds(), {
 					checkZoomRange: true,
 					zoomMargin: 30
 				});
 			}
 
-			// Запретить скролл мышью
 			myMap.behaviors.disable('scrollZoom')
 
-			// Удаление прелоадера
 			layer = myMap.layers.get(0).get(0);
 			waitForTilesLoad(layer).then(function () {
 				document.querySelectorAll('.is-active').forEach(element => {

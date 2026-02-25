@@ -2,7 +2,7 @@ import gulp from "gulp";
 const { src, dest, parallel } = gulp;
 import path from "path";
 import fs from "fs";
-import { paths, isBuild, concatLibs, __dirname } from "./settings.js";
+import { paths, isDev, isBuild, concatLibs, __dirname } from "./settings.js";
 import browsersync from "browser-sync";
 import notify from "gulp-notify";
 import concat from "gulp-concat";

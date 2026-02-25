@@ -22,6 +22,9 @@
 
 			pointer-events: none
 
+			transform: translate(var(--moveX, 0), var(--moveY, 0))
+			transition: transform .3s ease
+
 	&__img 
 		width: 100%
 		object-fit: cover

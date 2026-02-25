@@ -83,10 +83,12 @@
 
 	&-main 
 		position: relative
+		display: grid
+		grid-template-columns: 100%
 		padding-top: var(--headerFixedHeight)
 
 		@media (max-height: 900px) and (min-width: 768px)
-			min-height: max(500px, 100dvh)
+			min-height: max(min(calc(400px + 300px), calc(400px + 300 * ((100vw - 375px) / 1545))), 100dvh)
 			
 		@media (min-height: 901px)
 			+adap('min-height', 800, 400)
@@ -95,42 +97,46 @@
 			width: 100%
 
 		&__slider
+			display: grid
+ 
+		&__bg
 			position: absolute
 			left: 0
 			top: 0
-			z-index: 1
-			display: flex
 			width: 100%
 			height: 100%
+			object-fit: cover
+			pointer-events: none
+
+		&__item 
+			position: relative
+			padding-block: 120px
 
 			&:after
 				content: ''
-				+abs 
-				z-index: 2
-				background: linear-gradient(180deg, #101010 0%, rgba(16, 16, 16, 0.504808) 100%)
-				pointer-events: none
-
-			img 
 				position: absolute
 				left: 0
-				top: 0
+				top: -1px
+				z-index: 0
 				width: 100%
-				height: 100%
-				// height: auto
-				object-fit: cover
+				height: calc(100% + 1px)
+				
+				background: linear-gradient(180deg, #101010 0%, rgba(16, 16, 16, 0.504808) 100%)
+				pointer-events: none
 
 		&__pagination 
 			@media (max-width: #{$firstBreakpoint + px}) or (min-width: #{$firstBreakpoint + 1 + px})
 				margin-top: 0
 
-		&__navigation
+		&__navigation 
 			position: absolute
 			left: 50%
-			z-index: 4
-			+adap('bottom', 40, 20)
 			translate: -50% 0
+			+adap('bottom', 40, 20)
+			z-index: 4
 			display: flex
 			align-items: center
+			justify-content: center
 			gap: 12px
 
 		&__wrapper
@@ -140,11 +146,10 @@
 			justify-items: center
 			grid-template-columns: 100%
 			align-content: start
-			+adap('padding-block', 120, 40)
 
 			text-align: center
 
-			pointer-events: none
+			// pointer-events: none
 
 			&>*
 				pointer-events: auto
@@ -155,9 +160,12 @@
 
 			+pt
 			font-weight: 700
-			+adap('font-size', 80, 48, $widthTo: 992,   $min: true)
 			line-height: 1.15
 			text-transform: uppercase
+
+			@media (max-width: #{$firstBreakpoint + px}) or (min-width: #{$firstBreakpoint + 1 + px})
+				+adap('font-size', 80, 48, $widthTo: 992,   $min: true)
+				
 			 
 		&__subtitle 
 			+adap('margin-bottom', 40, 20)
@@ -241,7 +249,6 @@
 				+adap('width', 210, minusPercent(30, 210)  , 1199)
 				+adap('height', 44, minusPercent(30, 44)  , 1199)
 
-
 	@media (max-width: 991px)
 		&__button 
 			min-width: auto
@@ -255,13 +262,15 @@
 			&__subtitle 
 				+adap('font-size', 28, 20, 991)
 
-
 	@media (max-width: 767px)
 		background: $bg
- 
+
 		&-main 
-			&__wrapper
-				padding: 40px 0 80px 0
+			&__slider 
+				position: static
+			
+			&__item 
+				padding: 40px 0 100px 0
 
 			&__title 
 				&:before,
@@ -273,8 +282,12 @@
 			&-wrapper 
 				min-height: 55px
 
+		&__mobile
+			height: calc(100dvh - #{var(--headerFixedHeight)})
+
 		&-main 
-			padding-top: 55px
+			&__item
+				padding-top: 55px
 
 			&__buttons   
 				display: grid
