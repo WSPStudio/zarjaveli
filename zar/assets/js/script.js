@@ -628,6 +628,8 @@
 
   // После отправки формы
   function successSubmitForm(form) {
+    const modalInterval = 3000;
+
     fadeOut(".modal");
 
     setTimeout(() => {
@@ -1261,6 +1263,7 @@
             isFile: false,
             autoplay: false,
             controls: true,
+            fetchpriority: null,
             loop: true,
           };
 
@@ -1270,6 +1273,7 @@
           this.container = settings.container;
           this.autoplay = settings.autoplay;
           this.controls = settings.controls;
+          this.fetchpriority = settings.fetchpriority;
           this.loop = settings.loop;
           this.videoUrl = this.normalizeUrl(videoUrl);
 
@@ -1391,6 +1395,7 @@
 
         let controls = true;
         let loop = true;
+        let fetchpriority = "low";
 
         if (video.hasAttribute("controls")) {
           const value = video.getAttribute("controls");
@@ -1406,11 +1411,16 @@
           }
         }
 
+        if (video.hasAttribute("fetchpriority")) {
+          fetchpriority = video.getAttribute("fetchpriority");
+        }
+
         new LazyVideo(videoUrl, {
           container: video,
           isFile: isFile,
           autoplay: autoplay,
           controls: controls,
+          fetchpriority: fetchpriority,
           loop: loop,
         });
       });

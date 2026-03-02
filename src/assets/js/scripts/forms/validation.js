@@ -169,6 +169,8 @@ if (allForms) {
 
 // После отправки формы
 export function successSubmitForm(form) {
+  const modalInterval = 3000;
+
   fadeOut(".modal");
 
   setTimeout(() => {

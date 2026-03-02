@@ -14,6 +14,7 @@ export function video() {
           isFile: false,
           autoplay: false,
           controls: true,
+          fetchpriority: null,
           loop: true,
         };
 
@@ -23,6 +24,7 @@ export function video() {
         this.container = settings.container;
         this.autoplay = settings.autoplay;
         this.controls = settings.controls;
+        this.fetchpriority = settings.fetchpriority;
         this.loop = settings.loop;
         this.videoUrl = this.normalizeUrl(videoUrl);
 
@@ -144,6 +146,7 @@ export function video() {
 
       let controls = true;
       let loop = true;
+      let fetchpriority = "low";
 
       if (video.hasAttribute("controls")) {
         const value = video.getAttribute("controls");
@@ -159,11 +162,16 @@ export function video() {
         }
       }
 
+      if (video.hasAttribute("fetchpriority")) {
+        fetchpriority = video.getAttribute("fetchpriority");
+      }
+
       new LazyVideo(videoUrl, {
         container: video,
         isFile: isFile,
         autoplay: autoplay,
         controls: controls,
+        fetchpriority: fetchpriority,
         loop: loop,
       });
     });

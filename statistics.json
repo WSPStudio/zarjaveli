@@ -3169,12 +3169,82 @@
       "date": "24.02.2026",
       "start": 1771943791579,
       "end": 1771943791579
+    },
+    {
+      "date": "25.02.2026",
+      "start": 1772006709630,
+      "end": 1772006709630
+    },
+    {
+      "date": "25.02.2026",
+      "start": 1772006727290,
+      "end": 1772006727290
+    },
+    {
+      "date": "25.02.2026",
+      "start": 1772006732514,
+      "end": 1772006732514
+    },
+    {
+      "date": "25.02.2026",
+      "start": 1772006746888,
+      "end": 1772006746888
+    },
+    {
+      "date": "25.02.2026",
+      "start": 1772041935096,
+      "end": 1772041935096
+    },
+    {
+      "date": "25.02.2026",
+      "start": 1772041956889,
+      "end": 1772041956889
+    },
+    {
+      "date": "25.02.2026",
+      "start": 1772042057001,
+      "end": 1772042057001
+    },
+    {
+      "date": "28.02.2026",
+      "start": 1772280426912,
+      "end": 1772280426912
+    },
+    {
+      "date": "02.03.2026",
+      "start": 1772435023602,
+      "end": 1772435023602
+    },
+    {
+      "date": "02.03.2026",
+      "start": 1772435113948,
+      "end": 1772435113948
+    },
+    {
+      "date": "02.03.2026",
+      "start": 1772435601800,
+      "end": 1772435601800
+    },
+    {
+      "date": "02.03.2026",
+      "start": 1772435618754,
+      "end": 1772435618754
+    },
+    {
+      "date": "02.03.2026",
+      "start": 1772435653014,
+      "end": 1772435653014
+    },
+    {
+      "date": "02.03.2026",
+      "start": 1772435702941,
+      "end": 1772435702941
     }
   ],
   "files": {
     "style.sass": 2,
-    "index.html": 624,
-    "_footer.sass": 70,
+    "index.html": 626,
+    "_footer.sass": 73,
     "script.js": 72,
     "showmore.js": 2,
     "fixedmenu.js": 1,
@@ -3182,7 +3252,7 @@
     "_news.sass": 1,
     "_header.sass": 445,
     "components.sass": 24,
-    "head.html": 99,
+    "head.html": 100,
     "common.sass": 24,
     "blocks.sass": 8,
     "_default.sass": 58,
@@ -3190,8 +3260,8 @@
     "front-page.php": 4,
     "scrollbar.js": 13,
     "test.html": 1,
-    "_checkbox.sass": 37,
-    "validation.js": 128,
+    "_checkbox.sass": 47,
+    "validation.js": 135,
     "scroll.js": 2,
     "popup.js": 4,
     "_notify.sass": 65,
@@ -3203,9 +3273,9 @@
     "tab.js": 1,
     "variables.js": 4,
     "helpers.js": 1,
-    "_modal.sass": 17,
+    "_modal.sass": 24,
     "popups.html": 4,
-    "modals.html": 15,
+    "modals.html": 17,
     "modal.js": 57,
     "crumbs.html": 2,
     "burger.js": 2,
@@ -3215,7 +3285,7 @@
     "context.js": 4,
     "_context.sass": 1,
     "animation.js": 1,
-    "header.html": 70,
+    "header.html": 71,
     "checks.js": 1,
     "_form.sass": 22,
     "_switch.sass": 1,
@@ -3228,7 +3298,7 @@
     "_interface.sass": 76,
     "_variables.sass": 16,
     "_format.sass": 140,
-    "_why.sass": 39,
+    "_why.sass": 40,
     "_gallery.sass": 93,
     "_info.sass": 49,
     "_conditions.sass": 13,

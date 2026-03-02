@@ -91,15 +91,23 @@
 			flex-basis: 280px
 			aspect-ratio: 1
 			min-height: auto
-	
+
 	@media (max-width: 767px)
 		&__wrapper
 			display: grid
-			grid-template-columns: 100%
+			grid-template-columns: repeat(2, 1fr)
 
 		&__item 
 			aspect-ratio: auto
+
+			&:nth-child(odd)
+				&:last-child
+					grid-column: 1/-1
+
 			&-title 
 				br 
 					display: none
- 
+
+	@media (max-width: 575px)
+		&__wrapper
+			grid-template-columns: 100%

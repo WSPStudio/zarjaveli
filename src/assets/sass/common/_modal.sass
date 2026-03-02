@@ -17,7 +17,7 @@ $close-color: $gray
 	height: 100%
 					 
 	overflow: hidden
-	background: rgba(0, 0, 0, 0.7)
+	background: rgba(0, 0, 0, 0.3) 
 	backdrop-filter: blur(8px)
 
 	&_open 
@@ -119,11 +119,8 @@ $close-color: $gray
 			&__content 
 				display: grid
 				+adap('gap', 20, 12)
-				min-width: 280px
-				justify-items: center
-
-				background: #fff
-				color: $text
+				+adap('min-width', 530, 300)
+				justify-items: center  
 
 			&__title, &__subtitle
 				margin: 0
