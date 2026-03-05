@@ -156,3 +156,30 @@ let wrap = (query, tag, wrapContent = false) => {
 };
 
 wrap("table", ".table");
+wrap("video", ".video");
+
+const videoBlocks = document.querySelectorAll("video");
+
+if (videoBlocks) {
+  videoBlocks.forEach((video) => {
+    const block = video.closest(".video");
+
+    const toggle = () => {
+      video.paused ? video.play() : video.pause();
+    };
+
+    block.addEventListener("click", toggle);
+
+    video.addEventListener("play", () => {
+      block.classList.add("is-playing");
+    });
+
+    video.addEventListener("pause", () => {
+      block.classList.remove("is-playing");
+    });
+
+    video.addEventListener("ended", () => {
+      block.classList.remove("is-playing");
+    });
+  });
+}

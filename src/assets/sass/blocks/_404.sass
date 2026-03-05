@@ -1,0 +1,190 @@
+.section-404
+	position: relative
+	padding-top: var(--headerFixedHeight)
+
+	@media (max-width: 767px)
+		&:after
+			content: ''
+			+abs
+			background: linear-gradient(to top, rgba($bg, 1) 0%, rgba($bg, 0) 40%)
+
+	&__wrapper
+		display: grid
+		justify-items: center
+		grid-template-columns: 100%
+		align-content: start
+		+adap('padding-top', 110, 40)
+		+adap('padding-bottom', 195, 40)
+
+		text-align: center
+
+	&__bg 
+		position: absolute
+		left: 0
+		top: 0
+		width: 100%
+		height: 100%
+		z-index: -1
+
+		object-fit: cover
+		object-position: bottom left
+
+	&__title 
+		margin-bottom: 20px
+		+adap('gap', 20, 16)
+
+		font-weight: 700
+		+adap('font-size', 160, 60)
+		line-height: 1
+		text-transform: uppercase
+		color: #fff
+
+		&:after,
+		&:before
+			max-width: 135px
+
+	&__subtitle 
+		margin-bottom: 20px
+
+		+pt
+		font-weight: 700
+		+adap('font-size', 60, 24)
+		line-height: 1.2
+		text-transform: uppercase
+		text-align: center
+		color: #fff
+	
+	&__text 
+		+adap('margin-bottom', 32, 20)
+
+		+adap('font-size', 20, 16)
+		font-weight: 500
+
+		@media (max-width: 575px)
+			br 
+				display: none
+
+	&__decor 
+		+adap('margin-bottom', 32, 20)
+
+		svg 
+			+adap('width', 146, minusPercent(30, 146))
+			+adap('height', 18, minusPercent(30, 18))
+			fill: $active
+
+	
+	&__buttons 
+		display: flex
+		align-items: center
+		flex-wrap: wrap
+		+adap('gap', 20, 12)
+
+		&>*
+			flex-grow: 1
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

@@ -135,6 +135,10 @@ export function html() {
               const picMatch = imgTag.match(/\spic(?:="([^"]*)")?/);
               const picAttr = !!picMatch;
 
+              if (/\bnot-pic\b/i.test(imgTag)) {
+                return imgTag.replace(/\s?not-pic(?:="[^"]*")?/i, "");
+              }
+
               let picWidths = [defaultMobileMedia];
               if (picMatch && picMatch[1]) {
                 picWidths = picMatch[1]
@@ -152,6 +156,7 @@ export function html() {
               const classAttr = getAttr("class");
               const widthAttr = getAttr("width");
               const heightAttr = getAttr("height");
+              const styleAttr = getAttr("style");
               const alt = getAttr("alt") || "";
               const loading = getAttr("loading");
               const loadingAttr = loading ? ` loading="${loading}"` : "";
@@ -197,6 +202,14 @@ export function html() {
                     sources.push(`<source srcset="${path.join(dir, `${base}-${w}.webp`)}" type="image/webp" media="${media}">`);
                   }
                 });
+
+                if (isBuild) {
+                  if (useDataAttr) {
+                    sources.push(`<source srcset="${placeholder}" data-srcset="${path.join(dir, `${base}.avif`)}" type="image/avif">`);
+                  } else {
+                    sources.push(`<source srcset="${path.join(dir, `${base}.avif`)}" type="image/avif">`);
+                  }
+                }
               } else {
                 if (isBuild) {
                   if (useDataAttr) {
@@ -220,9 +233,9 @@ export function html() {
               let imgHtml;
 
               if (useDataAttr) {
-                imgHtml = `<img src="${placeholder}" data-src="${path.join(dir, imgFinal)}"${classAttr ? ` class="${classAttr}"` : ""}${widthAttr ? ` width="${widthAttr}"` : ""}${heightAttr ? ` height="${heightAttr}"` : ""} alt="${alt}"${loadingAttr} decoding="${decoding}" ${fetchpriorityAttr}>`;
+                imgHtml = `<img src="${placeholder}" data-src="${path.join(dir, imgFinal)}"${classAttr ? ` class="${classAttr}"` : ""}${widthAttr ? ` width="${widthAttr}"` : ""}${heightAttr ? ` height="${heightAttr}"` : ""}${styleAttr ? ` style="${styleAttr}"` : ""} alt="${alt}"${loadingAttr} decoding="${decoding}" ${fetchpriorityAttr}>`;
               } else {
-                imgHtml = `<img src="${path.join(dir, imgFinal)}"${classAttr ? ` class="${classAttr}"` : ""}${widthAttr ? ` width="${widthAttr}"` : ""}${heightAttr ? ` height="${heightAttr}"` : ""} alt="${alt}"${loadingAttr} decoding="${decoding}" ${fetchpriorityAttr}>`;
+                imgHtml = `<img src="${path.join(dir, imgFinal)}"${classAttr ? ` class="${classAttr}"` : ""}${widthAttr ? ` width="${widthAttr}"` : ""}${heightAttr ? ` height="${heightAttr}"` : ""}${styleAttr ? ` style="${styleAttr}"` : ""} alt="${alt}"${loadingAttr} decoding="${decoding}" ${fetchpriorityAttr}>`;
               }
 
               const finalHtml = dedent(`

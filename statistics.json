@@ -3239,29 +3239,114 @@
       "date": "02.03.2026",
       "start": 1772435702941,
       "end": 1772435702941
+    },
+    {
+      "date": "02.03.2026",
+      "start": 1772440728062,
+      "end": 1772440728062
+    },
+    {
+      "date": "02.03.2026",
+      "start": 1772440747052,
+      "end": 1772440747052
+    },
+    {
+      "date": "02.03.2026",
+      "start": 1772444391231,
+      "end": 1772444391231
+    },
+    {
+      "date": "03.03.2026",
+      "start": 1772548631919,
+      "end": 1772548631919
+    },
+    {
+      "date": "04.03.2026",
+      "start": 1772609280754,
+      "end": 1772609280754
+    },
+    {
+      "date": "04.03.2026",
+      "start": 1772609418638,
+      "end": 1772609418638
+    },
+    {
+      "date": "04.03.2026",
+      "start": 1772612079272,
+      "end": 1772612079272
+    },
+    {
+      "date": "04.03.2026",
+      "start": 1772612158707,
+      "end": 1772612158707
+    },
+    {
+      "date": "04.03.2026",
+      "start": 1772612435926,
+      "end": 1772612435926
+    },
+    {
+      "date": "04.03.2026",
+      "start": 1772612543691,
+      "end": 1772612543691
+    },
+    {
+      "date": "04.03.2026",
+      "start": 1772617339017,
+      "end": 1772617339017
+    },
+    {
+      "date": "04.03.2026",
+      "start": 1772617721167,
+      "end": 1772617721167
+    },
+    {
+      "date": "05.03.2026",
+      "start": 1772693853531,
+      "end": 1772693853531
+    },
+    {
+      "date": "05.03.2026",
+      "start": 1772694253902,
+      "end": 1772694253902
+    },
+    {
+      "date": "05.03.2026",
+      "start": 1772694258336,
+      "end": 1772694258336
+    },
+    {
+      "date": "05.03.2026",
+      "start": 1772694270918,
+      "end": 1772694270918
+    },
+    {
+      "date": "05.03.2026",
+      "start": 1772694281528,
+      "end": 1772694281528
     }
   ],
   "files": {
     "style.sass": 2,
-    "index.html": 626,
+    "index.html": 632,
     "_footer.sass": 73,
-    "script.js": 72,
+    "script.js": 80,
     "showmore.js": 2,
     "fixedmenu.js": 1,
     "_about.sass": 100,
     "_news.sass": 1,
     "_header.sass": 445,
-    "components.sass": 24,
+    "components.sass": 25,
     "head.html": 100,
     "common.sass": 24,
-    "blocks.sass": 8,
+    "blocks.sass": 9,
     "_default.sass": 58,
     "_mixins.sass": 26,
     "front-page.php": 4,
     "scrollbar.js": 13,
     "test.html": 1,
     "_checkbox.sass": 47,
-    "validation.js": 135,
+    "validation.js": 169,
     "scroll.js": 2,
     "popup.js": 4,
     "_notify.sass": 65,
@@ -3269,13 +3354,13 @@
     "_select.sass": 38,
     "select.js": 72,
     "foot.html": 105,
-    "components.js": 14,
+    "components.js": 17,
     "tab.js": 1,
     "variables.js": 4,
-    "helpers.js": 1,
-    "_modal.sass": 24,
+    "helpers.js": 20,
+    "_modal.sass": 102,
     "popups.html": 4,
-    "modals.html": 17,
+    "modals.html": 46,
     "modal.js": 57,
     "crumbs.html": 2,
     "burger.js": 2,
@@ -3285,9 +3370,9 @@
     "context.js": 4,
     "_context.sass": 1,
     "animation.js": 1,
-    "header.html": 71,
+    "header.html": 72,
     "checks.js": 1,
-    "_form.sass": 22,
+    "_form.sass": 31,
     "_switch.sass": 1,
     "gallery.js": 22,
     "viewer.js": 51,
@@ -3295,7 +3380,7 @@
     "_callback.sass": 4,
     "news-wrapper.html": 10,
     "footer.html": 25,
-    "_interface.sass": 76,
+    "_interface.sass": 77,
     "_variables.sass": 16,
     "_format.sass": 140,
     "_why.sass": 40,
@@ -3309,7 +3394,13 @@
     "_slider.sass": 15,
     "_book.sass": 50,
     "video.js": 25,
-    "_video.sass": 1
+    "_video.sass": 1,
+    "404.html": 27,
+    "_404.sass": 56,
+    "text.html": 41,
+    "_text.sass": 74,
+    "sitemap.html": 8,
+    "text.js": 15
   },
   "sizes": [],
   "pages": [],

@@ -87,7 +87,9 @@
     let tagClass = tag.split(".").slice(1);
     tagClass = tagClass.length > 0 ? tagClass : [];
 
-    {
+    if (typeof query === "object") {
+      elements = query;
+    } else {
       elements = document.querySelectorAll(query);
     }
 
@@ -120,6 +122,33 @@
   };
 
   wrap("table", ".table");
+  wrap("video", ".video");
+
+  const videoBlocks = document.querySelectorAll("video");
+
+  if (videoBlocks) {
+    videoBlocks.forEach((video) => {
+      const block = video.closest(".video");
+
+      const toggle = () => {
+        video.paused ? video.play() : video.pause();
+      };
+
+      block.addEventListener("click", toggle);
+
+      video.addEventListener("play", () => {
+        block.classList.add("is-playing");
+      });
+
+      video.addEventListener("pause", () => {
+        block.classList.remove("is-playing");
+      });
+
+      video.addEventListener("ended", () => {
+        block.classList.remove("is-playing");
+      });
+    });
+  }
 
   //
   //
@@ -542,6 +571,13 @@
           updateActiveState();
         }, 0);
       });
+
+      if (input.type == "date") {
+        input.addEventListener("keyup", checkInputDateValue);
+        input.addEventListener("change", checkInputDateValue);
+
+        input.classList.toggle("empty", input.value.length === 0);
+      }
     });
   }
 
@@ -551,6 +587,10 @@
     inputs.forEach((element) => {
       element.classList.remove("wpcf7-not-valid", "error");
     });
+  }
+
+  function checkInputDateValue(e) {
+    e.target.classList.toggle("empty", e.target.value.length === 0);
   }
 
   // Проверка формы перед отправкой
@@ -628,21 +668,17 @@
 
   // После отправки формы
   function successSubmitForm(form) {
-    const modalInterval = 3000;
-
-    fadeOut(".modal");
-
     setTimeout(() => {
       fadeIn(".modal-thank");
-    }, modalInterval - 500);
+    }, 1000);
 
     setTimeout(() => {
       fadeOut(".modal");
-    }, modalInterval * 2);
+    }, 3000);
 
     setTimeout(() => {
       body.classList.remove("no-scroll");
-    }, modalInterval * 3);
+    }, 4000);
 
     // form.reset();
 

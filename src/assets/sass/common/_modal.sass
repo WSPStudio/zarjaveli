@@ -1,6 +1,6 @@
-$max-width: 500px
-$padding-y: 32
-$padding-x: 32
+$max-width: 860px
+$padding-y: 40
+$padding-x: 40
 $brs: 8px
 
 $close-size: 20
@@ -21,11 +21,13 @@ $close-color: $gray
 	backdrop-filter: blur(8px)
 
 	&_open 
-		.modal__content
+		.modal__content,
+		.modal__close
 			animation: modal-open 0.4s ease forwards
 
 	&_close
-		.modal__content
+		.modal__content,
+		.modal__close
 			animation: modal-close 0.4s ease forwards
 
 	&__dialog 
@@ -45,10 +47,9 @@ $close-color: $gray
 		+adap('padding-inline', $padding-x, 16)
 									
 		+scrollbar(90vh, $scrollBarWidth: 4, $padding: 5) 
-		width: min(100%, $max-width)
 		
 		background: $bg
-		+adap('border-radius', 40, 16)
+		+adap('border-radius', 20, 16)
 
 		cursor: default
 		+t
@@ -71,48 +72,68 @@ $close-color: $gray
 				opacity: 0
 				translate: 0 -24px
 
+		&-wrapper
+			display: grid
+			grid-template-columns: 1fr auto
+			+adap('gap', 20, 12)
+			max-width: 936px
+			padding-inline: 12px
+
 	&__title
+		justify-content: flex-start
 		+adap('margin-bottom', 40, 20)
 
-		text-transform: none
+		text-align: left
 		
 		&:after,
 		&:before
 			display: none
 
 	&__form 
-		form
-			display: grid
-			justify-content: center
-			grid-template-columns: 100%
-		
 		.form__fields 
-			gap: 8px 
+			grid-template-columns: repeat(2, 1fr)
+			+adap('column-gap', 20, 8)
+			+adap('row-gap', 12, 8)
 
-		.submit 
-			margin-top: 12px
+		.textarea
+			grid-row: span 3
+			height: 100%
+
+		.form__row 
+			+adap('margin-top', 28, 16)
 
 		.checkbox 
-			+adap('font-size', 14, 12)
+			align-items: center
+
+		.submit 
+			min-width: 200px
 
 	&__close
-		position: absolute
-		+adap('right', $close-offset, 12)
-		+adap('top', $close-offset, 12)
-		z-index: 4
 		display: flex
+		align-items: center
+		justify-content: center
+		+adap('width', 56, 32)
+		+adap('height', 56, 32)
+		+adap('padding', 12, 8)
+
+		background: rgba(255, 255, 255, 0.12)
+		border-radius: 8px
 
 		cursor: pointer
 		+t
 
 		svg 
-			width: #{$close-size+px}
-			height: #{$close-size+px}
-			fill: $close-color 
+			max-width: 50%
+			max-height: 50% 
 
-			@media (any-hover: hover)
-				&:hover
-					fill: $active
+			stroke: rgba(255, 255, 255, 0.32)
+
+		@media (any-hover: hover)
+			&:hover
+				background: $bg
+
+				svg 
+					stroke: #fff
 
 	&-thank 
 		.modal
@@ -132,12 +153,36 @@ $close-color: $gray
 
 	@media (max-width: 575px)
 		&__dialog
-			width: 400px
 			max-width: 100%
 			padding: 0 12px
 			margin-inline: auto
 
-  
+		&__form 
+			.form__fields 
+				grid-template-columns: 100%
+
+			.textarea
+				order: 2
+
+			.form__row 
+				order: 3
+				display: grid
+
+		&__content 
+			&-wrapper
+				position: relative
+				grid-template-columns: 100%
+				padding: 0
+				 
+		&__close 
+			position: absolute
+			right: 12px
+			top: 12px
+
+			z-index: 2
+
+		&__title 
+			max-width: 85%
 
 
 

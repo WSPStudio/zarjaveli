@@ -1,0 +1,277 @@
+
+.text-block   
+	text-wrap: pretty 
+
+	&>*:last-child
+		margin-bottom: 0 
+
+	h1, h2, h3, b, strong
+		font-weight: 700
+
+	h1 
+		+adap('margin-bottom', 40, 20)
+
+		+pt 
+		font-weight: 700
+		+adap('font-size', 80, 40)
+		line-height: 1.15
+		text-transform: uppercase
+
+	h2
+		+adap('margin-bottom', 40, 16)
+
+		+pt 
+		font-weight: 700
+		+adap('font-size', 48, 28)
+		line-height: 1.08333
+		text-transform: uppercase
+
+	h3
+		+adap('margin-bottom', 20, 16)
+
+		font-weight: 800
+		+adap('font-size', 32, 24)
+		line-height: 1.375
+
+	h4
+		+title-4
+
+	p
+		&:not(:has(+ul,+ol))     
+			+adap('margin-bottom', 24, 16)
+
+		&:last-child
+			margin-bottom: 0 
+
+	img 
+		+adap('border-radius', 20, 16)
+		object-fit: cover
+
+		@media (min-width: 992px)
+			&[style*="float"]
+				max-width: 50%
+
+			&[style*="float: right"]
+				+adap('margin-left', 40, 20 , $min: true)
+
+			&[style*="float: left"]
+				+adap('margin-right', 40, 20 , $min: true)
+
+		@media (max-width: 991px)
+			float: none !important
+
+
+	.video
+		max-height: 882px
+		aspect-ratio: auto
+		+adap('border-radius', 20, 16)
+		overflow: hidden
+		+adap('margin-bottom', 20, 16)
+
+		cursor: pointer 
+
+		&:before
+			content: ""
+			position: absolute
+			inset: 0
+			z-index: 2
+
+			background: rgba($bg, .6)
+			transition: opacity .3s
+
+		&:after
+			content: ''
+
+			position: absolute
+			left: 50%
+			top: 50%
+			translate: -50% -50%
+			z-index: 2
+
+			+adap('width', 51, 32)
+			+adap('height', 56, 36)
+
+			background: url("data:image/svg+xml,%3Csvg width='52' height='57' viewBox='0 0 52 57' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M1.32 4.32128C1.41002 3.56441 1.67537 2.83898 2.09494 2.20266C2.51452 1.56634 3.07675 1.03667 3.73695 0.655761C4.39714 0.274854 5.13709 0.0532114 5.89798 0.00845545C6.65887 -0.0363005 7.4197 0.0970637 8.12 0.397946C11.66 1.91128 19.5933 5.50795 29.66 11.3179C39.73 17.1313 46.8133 22.2079 49.89 24.5113C52.5167 26.4813 52.5233 30.3879 49.8933 32.3646C46.8467 34.6546 39.85 39.6646 29.66 45.5513C19.46 51.4379 11.62 54.9913 8.11333 56.4846C5.09333 57.7746 1.71333 55.8179 1.32 52.5613C0.860001 48.7546 0 40.1113 0 28.4379C0 16.7713 0.856668 8.13128 1.32 4.32128Z' fill='%23FF9900' /%3E%3C/svg%3E") center / contain no-repeat
+
+		&.is-playing 
+			&:after,
+			&:before
+				display: none
+
+		&:not(.is-playing)
+			video::-webkit-media-controls 
+				display: none
+			
+		
+	// Списки 
+	$dots-size: 6
+	$dots-size-mobile: 6
+	$dots-gap: 28 // Отступ между маркером и текстом
+	$dots-gap-mobile: 20
+
+	$list-padding: 20 // Внешние отступы
+	$list-padding-mobile: 16
+
+	$li-gap: 16 // gap между li
+	$li-gap-mobile: 12
+
+	ul, ol  
+		display: grid
+
+		@if ($li-gap == $li-gap-mobile)
+			gap: #{$li-gap+px}
+
+		@else
+			+adap('gap', $li-gap, $li-gap-mobile)
+
+  
+		@if ($list-padding == $list-padding-mobile)
+			&:not(:first-child)
+				padding-top: #{$list-padding+px}
+
+		@else
+			&:not(:first-child)
+				+adap('padding-top', $list-padding, $list-padding-mobile)
+
+		&:not(:last-child)
+			@if ($list-padding == $list-padding-mobile)
+				padding-bottom: #{$list-padding+px}
+
+			@else
+				+adap('padding-bottom', $list-padding, $list-padding-mobile)
+
+		ul, ol
+			padding-top: 12px
+
+		li
+			&>*
+				display: contents
+
+	ul
+		&>li
+			position: relative
+
+			@if ($dots-gap == $dots-gap-mobile)
+				padding-left: #{$dots-size+$dots-gap+px}
+
+			@else 
+				+adap('padding-left', calculate($dots-size, $dots-gap), calculate($dots-size-mobile, $dots-gap-mobile))
+
+			&:before
+				content: ''
+						
+				position: absolute
+				left: 10px
+				top: 50%
+				translate: 0 -50%
+	
+				@if ($dots-size == $dots-size-mobile)
+					width: #{$dots-size+px}
+					height: #{$dots-size+px}
+					flex-basis: #{$dots-size+px}
+
+				@else
+					+adap('width', $dots-size, $dots-size-mobile)
+					+adap('height', $dots-size, $dots-size-mobile)
+					+adap('flex-basis', $dots-size, $dots-size-mobile)
+				
+				flex-grow: 0
+				flex-shrink: 0
+
+				background: $active
+				border-radius: 50% 
+	
+	ol
+		list-style: none
+		counter-reset: number 
+ 
+		&>li
+			padding-left: 12px
+
+			&:before
+				counter-increment: number 
+				content: counters(number,".") ". "
+
+				display: inline-flex
+				align-items: center
+				justify-content: flex-start
+				+adap('width', 24, 16)
+				+adap('height', 24, 16)
+
+				font: inherit
+				color: $active
+
+		ol
+			padding-left: 20px
+
+	blockquote
+		margin: 0
+		+adap('padding', 40, 16)
+
+		+adap('font-size', 20, 16)
+		background: $gray 
+
+	.table
+		width: 100%
+		overflow-y: hidden
+		overflow-x: auto
+		-webkit-overflow-scrolling: touch
+
+		+scrollbar-x(100%, $scrollBarHeight: 4, $padding: 5) 
+		 
+	table 
+		width: 100%
+		border-collapse: collapse
+		
+		th
+			font-weight: 700
+			text-align: left
+
+		td, th
+			padding: 16px
+
+		tr
+			&>:first-child
+				border-top-left-radius: 12px
+				border-bottom-left-radius: 12px
+
+			&>:last-child
+				border-top-right-radius: 12px
+				border-bottom-right-radius: 12px
+
+		thead
+			background: #000
+			color: #fff
+	 
+		tbody 
+			tr
+				&:nth-child(even)
+					background: #ccc
+
+				&:nth-child(odd)
+					background: #fafafa
+
+		&:not(:has(thead))
+			tbody 
+				tr
+					position: relative
+
+					&>th:first-child
+						position: sticky
+						left: 0
+						top: 0
+
+						background: inherit
+
+	video 
+		max-width: 100%
+		object-fit: cover
+
+	mark 
+		background: light($active, 8%)
+
+	img 
+		+adap('border-radius', 20, 16)
+
+		
+

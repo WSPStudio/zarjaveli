@@ -79,6 +79,13 @@ export function validation() {
         updateActiveState();
       }, 0);
     });
+
+    if (input.type == "date") {
+      input.addEventListener("keyup", checkInputDateValue);
+      input.addEventListener("change", checkInputDateValue);
+
+      input.classList.toggle("empty", input.value.length === 0);
+    }
   });
 }
 
@@ -90,8 +97,8 @@ export function clearInputs() {
   });
 }
 
-export function checkInputDateValue(input) {
-  input.classList.toggle("empty", input.value.length === 0);
+export function checkInputDateValue(e) {
+  e.target.classList.toggle("empty", e.target.value.length === 0);
 }
 
 // Проверка формы перед отправкой
@@ -169,21 +176,17 @@ if (allForms) {
 
 // После отправки формы
 export function successSubmitForm(form) {
-  const modalInterval = 3000;
-
-  fadeOut(".modal");
-
   setTimeout(() => {
     fadeIn(".modal-thank");
-  }, modalInterval - 500);
+  }, 1000);
 
   setTimeout(() => {
     fadeOut(".modal");
-  }, modalInterval * 2);
+  }, 3000);
 
   setTimeout(() => {
     body.classList.remove("no-scroll");
-  }, modalInterval * 3);
+  }, 4000);
 
   // form.reset();
 
