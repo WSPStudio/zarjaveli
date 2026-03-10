@@ -67,6 +67,7 @@ export function closeModal(modal, removeHashFlag = true) {
     }
 
     clearInputs();
+    resetForm(modal.querySelector("form"));
 
     setTimeout(() => {
       const modalInfo = document.querySelector(".modal-info");
@@ -85,6 +86,16 @@ export function modal() {
 
       let modal = document.getElementById(dataModal);
       if (!modal) return;
+
+      let placement = button.getAttribute("data-placement") || undefined;
+      if (typeof placement !== "undefined") {
+        modal.querySelector(".placement-input").value = placement;
+      }
+
+      let modalTitle = button.getAttribute("data-modal-title") || undefined;
+      if (typeof modalTitle !== "undefined") {
+        modal.querySelector(".modal__title").textContent = modalTitle;
+      }
 
       openModal(modal, !button.hasAttribute("data-modal-not-hash"), dataTab, stack);
     });

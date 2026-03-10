@@ -186,4 +186,76 @@ $close-color: $gray
 
 
 
+
+.cookies 
+	position: fixed
+	left: 50%
+	+adap('bottom', 40, 20)
+	translate: -50% 100%
+	z-index: 11
+	width: 100vw
+	display: flex
+	justify-content: center
+	
+	opacity: 0
+	+t
+	pointer-events: none
+	
+	&.active 
+		translate: -50% 0
+		opacity: 1
+		pointer-events: auto 
+				
+	&-wrapper
+		display: grid
+		grid-template-columns: 1fr auto 
+		align-items: center
+		row-gap: 8px
+		+adap('column-gap', 40, 12)
+		margin-inline: auto
+		width: min(1122px, calc(100vw - 24px))
+	
+		padding-block: 20px
+		+adap('padding-inline', 28, 16)
+
+		background: $bg
+		+adap('border-radius', 20, 16)
+	
+		@media (max-width: 575px)
+			grid-template-columns: 100%
+			justify-items: center
+			text-align: center
+	
+	&__title 
+		display: flex
+		align-items: center
+		+adap('gap', 16, 12)
+		+adap('font-size', 24, 20)
+		font-weight: 600
+		line-height: 1.3
+
+		svg 
+			+adap('width', 24, 20)
+			+adap('height', 24, 20)
+
+			fill: $active
+
+	&__text 
+		a 
+			color: $active 
+			+underline
+			text-decoration-color: currentColor
+	
+			+hov
+				text-decoration-color: transparent
+	
+	&__button 
+		min-width: 160px
+
+		+adap('font-size', 16, 14)
+		grid-row: span 2
+
+		@media (max-width: 575px)
+			order: 2
+
  

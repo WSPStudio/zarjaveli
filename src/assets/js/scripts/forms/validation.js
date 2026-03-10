@@ -188,7 +188,26 @@ export function successSubmitForm(form) {
     body.classList.remove("no-scroll");
   }, 4000);
 
-  // form.reset();
+  if (modalStack.length) {
+    closeModal(modalStack[modalStack.length - 1]);
+  }
+
+  const modal = form.closest(".modal");
+  const closeBtn = modal.querySelector(".modal__close");
+
+  // Закрытие модалки при клике на крестик
+  closeBtn.addEventListener("click", () => closeModal(modal));
+
+  // Закрытие модалки при клике вне области контента
+  window.addEventListener("click", (e) => {
+    const modalDialogs = document.querySelectorAll(".modal__dialog");
+    modalDialogs.forEach((modal) => {
+      if (e.target === modal) {
+        closeModal(modal.closest(".modal"));
+      }
+    });
+  });
+  //form.reset();
 
   // const originalPlaceholders = form.querySelectorAll("[data-original-placeholder]");
 
@@ -201,6 +220,7 @@ export function successSubmitForm(form) {
 
 if (typeof window !== "undefined") {
   window.successSubmitForm = successSubmitForm;
+  window.closeModal = closeModal;
 }
 
 // Валидация поля Телефон или Почта

@@ -3324,13 +3324,48 @@
       "date": "05.03.2026",
       "start": 1772694281528,
       "end": 1772694281528
+    },
+    {
+      "date": "05.03.2026",
+      "start": 1772701531871,
+      "end": 1772701531871
+    },
+    {
+      "date": "05.03.2026",
+      "start": 1772711822149,
+      "end": 1772711822149
+    },
+    {
+      "date": "05.03.2026",
+      "start": 1772712055422,
+      "end": 1772712055422
+    },
+    {
+      "date": "06.03.2026",
+      "start": 1772797886558,
+      "end": 1772797886558
+    },
+    {
+      "date": "10.03.2026",
+      "start": 1773146431586,
+      "end": 1773146431586
+    },
+    {
+      "date": "10.03.2026",
+      "start": 1773146456996,
+      "end": 1773146456996
+    },
+    {
+      "date": "10.03.2026",
+      "start": 1773146473148,
+      "end": 1773146473148
     }
   ],
   "files": {
     "style.sass": 2,
     "index.html": 632,
     "_footer.sass": 73,
-    "script.js": 80,
+    "script.js": 83,
     "showmore.js": 2,
     "fixedmenu.js": 1,
     "_about.sass": 100,
@@ -3346,7 +3381,7 @@
     "scrollbar.js": 13,
     "test.html": 1,
     "_checkbox.sass": 47,
-    "validation.js": 169,
+    "validation.js": 170,
     "scroll.js": 2,
     "popup.js": 4,
     "_notify.sass": 65,
@@ -3361,7 +3396,7 @@
     "_modal.sass": 102,
     "popups.html": 4,
     "modals.html": 46,
-    "modal.js": 57,
+    "modal.js": 59,
     "crumbs.html": 2,
     "burger.js": 2,
     "form.js": 11,
@@ -3375,7 +3410,7 @@
     "_form.sass": 31,
     "_switch.sass": 1,
     "gallery.js": 22,
-    "viewer.js": 51,
+    "viewer.js": 54,
     "callback.html": 3,
     "_callback.sass": 4,
     "news-wrapper.html": 10,

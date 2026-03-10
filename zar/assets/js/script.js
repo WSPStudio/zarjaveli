@@ -680,7 +680,26 @@
       body.classList.remove("no-scroll");
     }, 4000);
 
-    // form.reset();
+    if (modalStack.length) {
+      closeModal(modalStack[modalStack.length - 1]);
+    }
+
+    const modal = form.closest(".modal");
+    const closeBtn = modal.querySelector(".modal__close");
+
+    // Закрытие модалки при клике на крестик
+    closeBtn.addEventListener("click", () => closeModal(modal));
+
+    // Закрытие модалки при клике вне области контента
+    window.addEventListener("click", (e) => {
+      const modalDialogs = document.querySelectorAll(".modal__dialog");
+      modalDialogs.forEach((modal) => {
+        if (e.target === modal) {
+          closeModal(modal.closest(".modal"));
+        }
+      });
+    });
+    //form.reset();
 
     // const originalPlaceholders = form.querySelectorAll("[data-original-placeholder]");
 
@@ -693,6 +712,7 @@
 
   if (typeof window !== "undefined") {
     window.successSubmitForm = successSubmitForm;
+    window.closeModal = closeModal;
   }
 
   // Валидация поля Телефон или Почта
@@ -746,7 +766,7 @@
     ================================================
   */
 
-  let modalStack = [];
+  let modalStack$1 = [];
 
   // Открытие модалки
   function openModal(modal, addHashFlag = true, dataTab = null, stack = false) {
@@ -754,13 +774,13 @@
 
     if (!stack) {
       // Если не стековая, то закрыть все остальные модалки
-      document.querySelectorAll(".modal_open").forEach((m) => closeModal(m, false));
-      modalStack = [];
+      document.querySelectorAll(".modal_open").forEach((m) => closeModal$1(m, false));
+      modalStack$1 = [];
       body.classList.add(bodyOpenModalClass);
     }
 
     // Добавление в стек
-    modalStack.push(modal);
+    modalStack$1.push(modal);
 
     hideScrollbar();
 
@@ -778,21 +798,21 @@
     }
   }
 
-  function closeModal(modal, removeHashFlag = true) {
+  function closeModal$1(modal, removeHashFlag = true) {
     if (!modal) return;
 
     modal.classList.remove("modal_open");
     modal.classList.add("modal_close");
 
     // Убираем из стека
-    modalStack = modalStack.filter((m) => m !== modal);
+    modalStack$1 = modalStack$1.filter((m) => m !== modal);
 
     setTimeout(() => {
       fadeOut(modal);
 
       if (removeHashFlag && getHash() == modal.id) {
-        if (modalStack.length) {
-          window.location.hash = modalStack[modalStack.length - 1].id;
+        if (modalStack$1.length) {
+          window.location.hash = modalStack$1[modalStack$1.length - 1].id;
         } else {
           history.pushState("", document.title, window.location.pathname + window.location.search);
           body.classList.remove(bodyOpenModalClass);
@@ -801,6 +821,7 @@
       }
 
       clearInputs();
+      resetForm(modal.querySelector("form"));
 
       setTimeout(() => {
         const modalInfo = document.querySelector(".modal-info");
@@ -819,6 +840,16 @@
 
         let modal = document.getElementById(dataModal);
         if (!modal) return;
+
+        let placement = button.getAttribute("data-placement") || undefined;
+        if (typeof placement !== "undefined") {
+          modal.querySelector(".placement-input").value = placement;
+        }
+
+        let modalTitle = button.getAttribute("data-modal-title") || undefined;
+        if (typeof modalTitle !== "undefined") {
+          modal.querySelector(".modal__title").textContent = modalTitle;
+        }
 
         openModal(modal, !button.hasAttribute("data-modal-not-hash"), dataTab, stack);
       });
@@ -841,14 +872,14 @@
 
     // Закрытие модалки при клике на крестик
     document.querySelectorAll("[data-modal-close]").forEach((element) => {
-      element.addEventListener("click", () => closeModal(element.closest(".modal")));
+      element.addEventListener("click", () => closeModal$1(element.closest(".modal")));
     });
 
     // Закрытие модалки при клике вне области контента
     window.addEventListener("click", (e) => {
       modalDialogs.forEach((modal) => {
         if (e.target === modal) {
-          closeModal(modal.closest(".modal"));
+          closeModal$1(modal.closest(".modal"));
         }
       });
     });
@@ -856,8 +887,8 @@
     // Закрытие модалки при клике ESC
     window.addEventListener("keydown", (event) => {
       if (event.key === "Escape" && document.querySelectorAll(".lg-show").length === 0) {
-        if (modalStack.length) {
-          closeModal(modalStack[modalStack.length - 1]);
+        if (modalStack$1.length) {
+          closeModal$1(modalStack$1[modalStack$1.length - 1]);
         }
       }
     });
@@ -894,7 +925,7 @@
         isAnimating = false;
       } else if (!hash && openedModal) {
         isAnimating = true;
-        await closeModal(openedModal, false);
+        await closeModal$1(openedModal, false);
         isAnimating = false;
       }
     });
@@ -1008,7 +1039,7 @@
     Spotlight.show(items, {
       index: startIndex,
       animation: "slide,fade,scale",
-      control: "page,zoom,autofit,fullscreen,download,play,close",
+      control: "next,prev,page,zoom,autofit,fullscreen,download,play,close",
       zoom: true,
       autofit: true,
       fullscreen: true,
@@ -1553,7 +1584,6 @@
     if (!wrapper || !items.length) return;
 
     const initiallyVisible = 10;
-    const loadStep = 7;
 
     let visibleCount = 0;
 
@@ -1573,6 +1603,7 @@
 
     button.addEventListener("click", function () {
       let shownNow = 0;
+      const loadStep = windowWidth <= 575 ? 6 : 7;
 
       for (let i = visibleCount; i < items.length; i++) {
         if (shownNow >= loadStep) break;
@@ -1639,6 +1670,49 @@
       });
     });
   }
+
+  // Куки
+  document.addEventListener("DOMContentLoaded", function () {
+    setTimeout(() => {
+      const cookiesBlock = document.querySelector(".cookies");
+      const cookiesButton = document.querySelector(".cookies__button");
+
+      if (!localStorage.getItem("cookiesAccepted")) {
+        cookiesBlock.classList.add("active");
+      }
+
+      cookiesButton.addEventListener("click", function () {
+        cookiesBlock.classList.remove("active");
+        localStorage.setItem("cookiesAccepted", "true");
+      });
+    }, 3000);
+  });
+
+  BX.ready(function () {
+    // Привязываем календарь при клике к полю "Желаемая дата"
+    var form_book = document.querySelector('form[name="SIMPLE_FORM_4"]');
+    var inputNode = form_book.querySelector(".date-input");
+    BX.bind(inputNode, "click", function () {
+      BX.calendar({
+        node: inputNode, // Поле, к которому привязан календарь
+        field: inputNode, // Поле, куда запишется дата
+        bTime: false, // false - только дата, true - с временем
+        bHideTime: false, // Скрыть время
+      });
+    });
+
+    // Передаем название зала в форму при клике в блоке "Наши залы"
+    var room = BX("room");
+    room.querySelectorAll('.button[data-modal="modal-book"]').forEach((buttonNode) => {
+      BX.bind(buttonNode, "click", function (e) {
+        var col = e.target.closest(".room__item-col");
+        var title = col.querySelector(".room__item-title");
+        var form = document.querySelector('form[name="SIMPLE_FORM_4"]');
+        var room_name_input = form.querySelector(".room-name-input");
+        room_name_input.value = title.textContent;
+      });
+    });
+  });
 
 })();
 //# sourceMappingURL=script.js.map

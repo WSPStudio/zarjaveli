@@ -1,5 +1,6 @@
 import "./scripts/init.js";
 import "./components.js";
+import { windowWidth } from "./scripts/variables.js";
 
 //
 //
@@ -84,7 +85,6 @@ document.addEventListener("DOMContentLoaded", function () {
   if (!wrapper || !items.length) return;
 
   const initiallyVisible = 10;
-  const loadStep = 7;
 
   let visibleCount = 0;
 
@@ -104,6 +104,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   button.addEventListener("click", function () {
     let shownNow = 0;
+    const loadStep = windowWidth <= 575 ? 6 : 7;
 
     for (let i = visibleCount; i < items.length; i++) {
       if (shownNow >= loadStep) break;
@@ -168,5 +169,66 @@ if (parallaxImages) {
       item.style.setProperty("--moveX", "0px");
       item.style.setProperty("--moveY", "0px");
     });
+  });
+}
+
+// Куки
+document.addEventListener("DOMContentLoaded", function () {
+  setTimeout(() => {
+    const cookiesBlock = document.querySelector(".cookies");
+    const cookiesButton = document.querySelector(".cookies__button");
+
+    if (!localStorage.getItem("cookiesAccepted")) {
+      cookiesBlock.classList.add("active");
+    }
+
+    cookiesButton.addEventListener("click", function () {
+      cookiesBlock.classList.remove("active");
+      localStorage.setItem("cookiesAccepted", "true");
+    });
+  }, 3000);
+});
+
+BX.ready(function () {
+  // Привязываем календарь при клике к полю "Желаемая дата"
+  var form_book = document.querySelector('form[name="SIMPLE_FORM_4"]');
+  var inputNode = form_book.querySelector(".date-input");
+  BX.bind(inputNode, "click", function () {
+    BX.calendar({
+      node: inputNode, // Поле, к которому привязан календарь
+      field: inputNode, // Поле, куда запишется дата
+      bTime: false, // false - только дата, true - с временем
+      bHideTime: false, // Скрыть время
+    });
+  });
+
+  // Передаем название зала в форму при клике в блоке "Наши залы"
+  var room = BX("room");
+  room.querySelectorAll('.button[data-modal="modal-book"]').forEach((buttonNode) => {
+    BX.bind(buttonNode, "click", function (e) {
+      var col = e.target.closest(".room__item-col");
+      var title = col.querySelector(".room__item-title");
+      var form = document.querySelector('form[name="SIMPLE_FORM_4"]');
+      var room_name_input = form.querySelector(".room-name-input");
+      room_name_input.value = title.textContent;
+    });
+  });
+});
+
+function resetForm(form) {
+  if (!form) return;
+
+  form.reset();
+
+  let hiddenInputs = form.querySelectorAll('[name*="form_text"]');
+  if (hiddenInputs) {
+    hiddenInputs.forEach((input) => {
+      input.value = "";
+    });
+  }
+
+  let activeTags = form.querySelectorAll(".active");
+  activeTags.forEach((tag) => {
+    tag.classList.remove("active");
   });
 }
