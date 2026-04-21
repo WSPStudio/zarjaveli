@@ -189,31 +189,33 @@ document.addEventListener("DOMContentLoaded", function () {
   }, 3000);
 });
 
-BX.ready(function () {
-  // Привязываем календарь при клике к полю "Желаемая дата"
-  var form_book = document.querySelector('form[name="SIMPLE_FORM_4"]');
-  var inputNode = form_book.querySelector(".date-input");
-  BX.bind(inputNode, "click", function () {
-    BX.calendar({
-      node: inputNode, // Поле, к которому привязан календарь
-      field: inputNode, // Поле, куда запишется дата
-      bTime: false, // false - только дата, true - с временем
-      bHideTime: false, // Скрыть время
+if (typeof BX !== "undefined" && typeof BX.ready === "function") {
+  BX.ready(function () {
+    // Привязываем календарь при клике к полю "Желаемая дата"
+    var form_book = document.querySelector('form[name="SIMPLE_FORM_4"]');
+    var inputNode = form_book.querySelector(".date-input");
+    BX.bind(inputNode, "click", function () {
+      BX.calendar({
+        node: inputNode, // Поле, к которому привязан календарь
+        field: inputNode, // Поле, куда запишется дата
+        bTime: false, // false - только дата, true - с временем
+        bHideTime: false, // Скрыть время
+      });
     });
-  });
 
-  // Передаем название зала в форму при клике в блоке "Наши залы"
-  var room = BX("room");
-  room.querySelectorAll('.button[data-modal="modal-book"]').forEach((buttonNode) => {
-    BX.bind(buttonNode, "click", function (e) {
-      var col = e.target.closest(".room__item-col");
-      var title = col.querySelector(".room__item-title");
-      var form = document.querySelector('form[name="SIMPLE_FORM_4"]');
-      var room_name_input = form.querySelector(".room-name-input");
-      room_name_input.value = title.textContent;
+    // Передаем название зала в форму при клике в блоке "Наши залы"
+    var room = BX("room");
+    room.querySelectorAll('.button[data-modal="modal-book"]').forEach((buttonNode) => {
+      BX.bind(buttonNode, "click", function (e) {
+        var col = e.target.closest(".room__item-col");
+        var title = col.querySelector(".room__item-title");
+        var form = document.querySelector('form[name="SIMPLE_FORM_4"]');
+        var room_name_input = form.querySelector(".room-name-input");
+        room_name_input.value = title.textContent;
+      });
     });
   });
-});
+}
 
 function resetForm(form) {
   if (!form) return;

@@ -106,7 +106,7 @@ function openSpotlight(items, startIndex = 1) {
   Spotlight.show(items, {
     index: startIndex,
     animation: "slide,fade,scale",
-    control: "next,prev,page,zoom,autofit,fullscreen,download,play,close",
+    control: "next,prev,page,zoom,autofit,fullscreen,download,close",
     zoom: true,
     autofit: true,
     fullscreen: true,

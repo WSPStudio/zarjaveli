@@ -14,6 +14,7 @@
   document.querySelectorAll("[data-fixed]");
 
   const allForms = document.querySelectorAll("form");
+  let modalStack = [];
 
   const menuClass = ".header__mobile";
   const menu = document.querySelector(menuClass) ? document.querySelector(menuClass) : document.querySelector("head");
@@ -584,8 +585,14 @@
   validation();
 
   function clearInputs() {
-    inputs.forEach((element) => {
-      element.classList.remove("wpcf7-not-valid", "error");
+    let inputs = document.querySelectorAll("input, textarea");
+
+    inputs.forEach((input) => {
+      input.classList.remove("wpcf7-not-valid", "error");
+
+      if (input.type == "date") {
+        input.classList.add("empty");
+      }
     });
   }
 
@@ -680,8 +687,8 @@
       body.classList.remove("no-scroll");
     }, 4000);
 
-    if (modalStack.length) {
-      closeModal(modalStack[modalStack.length - 1]);
+    if (modalStack$1.length) {
+      closeModal(modalStack$1[modalStack$1.length - 1]);
     }
 
     const modal = form.closest(".modal");
@@ -766,21 +773,18 @@
     ================================================
   */
 
-  let modalStack$1 = [];
-
   // Открытие модалки
   function openModal(modal, addHashFlag = true, dataTab = null, stack = false) {
     if (!modal) return;
 
     if (!stack) {
-      // Если не стековая, то закрыть все остальные модалки
-      document.querySelectorAll(".modal_open").forEach((m) => closeModal$1(m, false));
-      modalStack$1 = [];
+      document.querySelectorAll(".modal_open").forEach((m) => closeModal(m, false));
+      modalStack.length = 0;
       body.classList.add(bodyOpenModalClass);
     }
 
     // Добавление в стек
-    modalStack$1.push(modal);
+    modalStack.push(modal);
 
     hideScrollbar();
 
@@ -798,21 +802,23 @@
     }
   }
 
-  function closeModal$1(modal, removeHashFlag = true) {
+  function closeModal(modal, removeHashFlag = true) {
     if (!modal) return;
 
     modal.classList.remove("modal_open");
     modal.classList.add("modal_close");
 
-    // Убираем из стека
-    modalStack$1 = modalStack$1.filter((m) => m !== modal);
+    const index = modalStack.indexOf(modal);
+    if (index !== -1) {
+      modalStack.splice(index, 1);
+    }
 
     setTimeout(() => {
       fadeOut(modal);
 
       if (removeHashFlag && getHash() == modal.id) {
-        if (modalStack$1.length) {
-          window.location.hash = modalStack$1[modalStack$1.length - 1].id;
+        if (modalStack.length) {
+          window.location.hash = modalStack[modalStack.length - 1].id;
         } else {
           history.pushState("", document.title, window.location.pathname + window.location.search);
           body.classList.remove(bodyOpenModalClass);
@@ -821,6 +827,25 @@
       }
 
       clearInputs();
+
+      function resetForm(form) {
+        if (!form) return;
+
+        form.reset();
+
+        let hiddenInputs = form.querySelectorAll('[name*="form_text"]');
+        if (hiddenInputs) {
+          hiddenInputs.forEach((input) => {
+            input.value = "";
+          });
+        }
+
+        let activeTags = form.querySelectorAll(".active");
+        activeTags.forEach((tag) => {
+          tag.classList.remove("active");
+        });
+      }
+
       resetForm(modal.querySelector("form"));
 
       setTimeout(() => {
@@ -872,14 +897,14 @@
 
     // Закрытие модалки при клике на крестик
     document.querySelectorAll("[data-modal-close]").forEach((element) => {
-      element.addEventListener("click", () => closeModal$1(element.closest(".modal")));
+      element.addEventListener("click", () => closeModal(element.closest(".modal")));
     });
 
     // Закрытие модалки при клике вне области контента
     window.addEventListener("click", (e) => {
       modalDialogs.forEach((modal) => {
         if (e.target === modal) {
-          closeModal$1(modal.closest(".modal"));
+          closeModal(modal.closest(".modal"));
         }
       });
     });
@@ -887,8 +912,8 @@
     // Закрытие модалки при клике ESC
     window.addEventListener("keydown", (event) => {
       if (event.key === "Escape" && document.querySelectorAll(".lg-show").length === 0) {
-        if (modalStack$1.length) {
-          closeModal$1(modalStack$1[modalStack$1.length - 1]);
+        if (modalStack.length) {
+          closeModal(modalStack[modalStack.length - 1]);
         }
       }
     });
@@ -925,7 +950,7 @@
         isAnimating = false;
       } else if (!hash && openedModal) {
         isAnimating = true;
-        await closeModal$1(openedModal, false);
+        await closeModal(openedModal, false);
         isAnimating = false;
       }
     });
@@ -1039,7 +1064,7 @@
     Spotlight.show(items, {
       index: startIndex,
       animation: "slide,fade,scale",
-      control: "next,prev,page,zoom,autofit,fullscreen,download,play,close",
+      control: "next,prev,page,zoom,autofit,fullscreen,download,close",
       zoom: true,
       autofit: true,
       fullscreen: true,
@@ -1688,31 +1713,33 @@
     }, 3000);
   });
 
-  BX.ready(function () {
-    // Привязываем календарь при клике к полю "Желаемая дата"
-    var form_book = document.querySelector('form[name="SIMPLE_FORM_4"]');
-    var inputNode = form_book.querySelector(".date-input");
-    BX.bind(inputNode, "click", function () {
-      BX.calendar({
-        node: inputNode, // Поле, к которому привязан календарь
-        field: inputNode, // Поле, куда запишется дата
-        bTime: false, // false - только дата, true - с временем
-        bHideTime: false, // Скрыть время
+  if (typeof BX !== "undefined" && typeof BX.ready === "function") {
+    BX.ready(function () {
+      // Привязываем календарь при клике к полю "Желаемая дата"
+      var form_book = document.querySelector('form[name="SIMPLE_FORM_4"]');
+      var inputNode = form_book.querySelector(".date-input");
+      BX.bind(inputNode, "click", function () {
+        BX.calendar({
+          node: inputNode, // Поле, к которому привязан календарь
+          field: inputNode, // Поле, куда запишется дата
+          bTime: false, // false - только дата, true - с временем
+          bHideTime: false, // Скрыть время
+        });
       });
-    });
 
-    // Передаем название зала в форму при клике в блоке "Наши залы"
-    var room = BX("room");
-    room.querySelectorAll('.button[data-modal="modal-book"]').forEach((buttonNode) => {
-      BX.bind(buttonNode, "click", function (e) {
-        var col = e.target.closest(".room__item-col");
-        var title = col.querySelector(".room__item-title");
-        var form = document.querySelector('form[name="SIMPLE_FORM_4"]');
-        var room_name_input = form.querySelector(".room-name-input");
-        room_name_input.value = title.textContent;
+      // Передаем название зала в форму при клике в блоке "Наши залы"
+      var room = BX("room");
+      room.querySelectorAll('.button[data-modal="modal-book"]').forEach((buttonNode) => {
+        BX.bind(buttonNode, "click", function (e) {
+          var col = e.target.closest(".room__item-col");
+          var title = col.querySelector(".room__item-title");
+          var form = document.querySelector('form[name="SIMPLE_FORM_4"]');
+          var room_name_input = form.querySelector(".room-name-input");
+          room_name_input.value = title.textContent;
+        });
       });
     });
-  });
+  }
 
 })();
 //# sourceMappingURL=script.js.map

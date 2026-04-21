@@ -1,5 +1,7 @@
 import { allForms, body } from "../variables";
 import { fadeIn, fadeOut } from "../ui/animation";
+import { modalStack } from "../variables";
+import { closeModal } from "../../components/modal";
 
 //
 //
@@ -92,8 +94,14 @@ export function validation() {
 validation();
 
 export function clearInputs() {
-  inputs.forEach((element) => {
-    element.classList.remove("wpcf7-not-valid", "error");
+  let inputs = document.querySelectorAll("input, textarea");
+
+  inputs.forEach((input) => {
+    input.classList.remove("wpcf7-not-valid", "error");
+
+    if (input.type == "date") {
+      input.classList.add("empty");
+    }
   });
 }
 
@@ -188,8 +196,8 @@ export function successSubmitForm(form) {
     body.classList.remove("no-scroll");
   }, 4000);
 
-  if (modalStack.length) {
-    closeModal(modalStack[modalStack.length - 1]);
+  if (modalStack$1.length) {
+    closeModal(modalStack$1[modalStack$1.length - 1]);
   }
 
   const modal = form.closest(".modal");

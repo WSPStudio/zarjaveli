@@ -1,0 +1,285 @@
+@use 'sass:color'
+	
+// селект 
+$select-current-padding: 4px 16px
+$select-min-height: 52px
+
+$select-border-color: #ccc
+$select-border: 1px solid $select-border-color
+$select-border-radius: 20px
+$select-background: #fff
+
+
+// опции 
+$select-option-height: 48px
+$select-option-padding: 4px 16px
+
+$select-option-border-radius: 8px
+$select-option-background: #fafafa
+$select-option-background-hover: rgba($active, .12)
+$select-option-color-hover: $text
+
+$select-option-active-background: $active
+$select-option-active-color: #fff
+$select-option-color: $text
+
+$select-value-delete-size: 16px
+
+// стрелка
+$select-arrow-size: 20px
+$select-arrow-color: #000
+
+// крестик на инпуте
+$select-input-close-offset: 12px
+$select-input-close-size: 12px
+$select-input-close-color: $active
+$select-input-close-icon: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTIzLjM2MTUgMjEuMTQ5N0wxNC4wNTkyIDExLjg2TDIzLjM2MTUgMi42NzU5MUMyMy40NjcyIDIuNTcwMzQgMjMuNTcyOSAyLjQ2NDc4IDIzLjY3ODYgMi4zNTkyMUMyMy45OTU3IDEuOTM2OTUgMjQuMTAxNCAxLjQwOTEzIDIzLjg5IDAuOTg2ODY5QzIzLjY3ODYgMC41NjQ2MSAyMy4zNjE1IDAuMTQyMzUxIDIyLjgzMjkgMC4wMzY3ODYxQzIyLjMwNDQgLTAuMDY4Nzc4NyAyMS43NzU4IDAuMDM2Nzg2MSAyMS4yNDczIDAuNTY0NjFMMTEuOTQ1IDkuODU0MzFMNS4yODU0IDMuMjAzNzNDNC40Mzk3NCAyLjM1OTIxIDMuNDg4MzYgMS40MDkxMyAyLjY0MjcgMC41NjQ2MUMyLjIxOTg3IDAuMDM2Nzg2MSAxLjY5MTMzIC0wLjA2ODc3ODcgMS4xNjI3OSAwLjAzNjc4NjFDMC42MzQyNDggMC4xNDIzNTEgMC4yMTE0MTYgMC41NjQ2MSAwIDEuMDkyNDNWMS44MzEzOUMwLjEwNTcwOCAyLjI1MzY1IDAuNDIyODMyIDIuNTcwMzQgMC43Mzk5NTYgMi44ODcwNEw5LjgzMDg0IDExLjk2NTZMMC43Mzk5NTYgMjEuMDQ0MkMwLjQyMjgzMiAyMS4zNjA5IDAuMTA1NzA4IDIxLjY3NzYgMCAyMi4wOTk4VjIyLjczMzJDMC4yMTE0MTYgMjMuMzY2NiAwLjUyODU0IDIzLjc4ODkgMS4xNjI3OSAyNEgxLjc5NzA0QzIuMjE5ODcgMjMuODk0NCAyLjUzNjk5IDIzLjU3NzcgMi44NTQxMiAyMy4zNjY2TDExLjk0NSAxNC4yODhMMjEuMDM1OSAyMy4zNjY2QzIxLjM1MyAyMy42ODMzIDIxLjU2NDQgMjMuODk0NCAyMS45ODczIDI0SDIyLjYyMTVMMjIuODMyOSAyMy44OTQ0QzIzLjM2MTUgMjMuNjgzMyAyMy43ODQzIDIzLjE1NTUgMjMuNzg0MyAyMi41MjIxQzIzLjg5IDIxLjg4ODcgMjMuNjc4NiAyMS41NzIgMjMuMzYxNSAyMS4xNDk3WiIgLz4KPC9zdmc+Cg=='
+ 
+// инпут
+$select-input-padding: 4px #{12px + $select-input-close-size + $select-input-close-offset} 4px 12px
+$select-input-height: 40px
+$select-input-border: 1px solid #000
+$select-input-border-radius: 8px
+
+.select 
+	position: relative
+
+	display: flex
+	align-items: center
+	justify-content: space-between
+	gap: 12px
+	min-height: $select-min-height
+	+adap('min-height', 54, 48)
+	padding: $select-current-padding
+	
+	border: $select-border
+	border-radius: $select-border-radius
+	background-color: $select-background
+
+	color: $text
+	font-size: 14px 
+
+	cursor: pointer
+	transition: background-color .3s 
+	overflow: hidden
+	user-select: none
+	+t
+
+	&_open-bottom 
+		border-bottom-left-radius: 0
+		border-bottom-right-radius: 0
+
+	&__arrow 
+		flex: 0 0 $select-arrow-size
+		width: $select-arrow-size
+		height: $select-arrow-size
+		+mask(arrow(), $select-arrow-color)
+		+t
+
+		+hov
+			background: $active
+
+	&__content 
+		position: absolute
+		padding: 12px
+		z-index: 10
+		min-width: 140px
+		display: grid
+		grid-template-columns: 100%  
+
+		border: 1px solid $select-border-color
+		background: #fff
+		box-shadow: 0 0 16px 0 rgba(183, 183, 183, 0.05)
+		opacity: 0
+
+		&[class*="_open"]
+			opacity: 1
+
+		&.select_open-top
+			border-top-left-radius: $select-border-radius
+			border-top-right-radius: $select-border-radius
+
+		&.select_open-bottom
+			border-bottom-left-radius: $select-border-radius
+			border-bottom-right-radius: $select-border-radius
+
+	&__options
+		display: grid
+		grid-template-columns: 100%
+		gap: 4px
+
+		+scrollbar(300px, $scrollBarWidth: 4, $padding: 5) 
+		scrollbar-gutter: stable
+		overscroll-behavior: contain
+		
+		@supports (-moz-appearance: none)
+			scrollbar-color: color.adjust($active, $lightness: 10%) $gray
+			scrollbar-width: thin
+
+	&__option
+		width: 100%
+		display: flex
+		align-items: center
+		min-height: $select-option-height
+		padding: $select-option-padding
+		
+		border-radius: $select-option-border-radius
+		background: $select-option-background
+
+		color: $select-option-color
+		cursor: pointer
+		user-select: none
+		+t
+
+		&.disabled 
+			cursor: not-allowed
+			opacity: .6
+
+		&.highlighted,
+		&:not(.disabled).selected
+			background: $select-option-active-background
+			color: $select-option-active-color
+
+		&:not(.disabled, .selected)
+			+hov
+				background: $select-option-background-hover
+				color: $select-option-color-hover
+
+		.select__input-highlight
+			background: light($active, 20%)
+
+	&__optgroup
+		display: grid
+		gap: 4px
+
+		&:not(:last-child)
+			padding-bottom: 12px
+			border-bottom: 1px solid $select-border-color
+			
+		&.ss-close 
+			.select__option
+				display: none !important
+
+		.select__option 
+			margin-left: 4px
+
+	&__input
+		display: flex
+		flex: 1 1 auto
+		margin-bottom: 12px
+
+		input 
+			position: relative
+			width: 100%		
+			padding: $select-input-padding
+			min-height: $select-input-height
+
+			border: $select-input-border
+			border-radius: $select-input-border-radius
+
+			&:focus-visible
+				border-color: $active
+				outline: none
+
+			&::-webkit-search-cancel-button
+				position: absolute
+				top: 50%
+				right: $select-input-close-offset
+				translate: 0 -50%
+				width: $select-input-close-size
+				height: $select-input-close-size
+
+				+mask(url($select-input-close-icon) center / contain no-repeat, $select-input-close-color)
+				cursor: pointer
+				appearance: none 
+				+t
+
+				font: inherit
+
+				+hov
+					background: $active
+
+	&__placeholder 
+		display: flex
+		align-items: center
+		width: 100%
+
+		overflow: hidden
+		text-overflow: ellipsis
+		white-space: nowrap
+
+	&__values 
+		display: inline-flex
+		align-items: center
+		gap: 4px
+		+scrollbar-x(100%, $scrollBarHeight: 3, $padding: 1) 
+		margin-bottom: -4px
+
+	&__value 
+		position: relative
+
+		display: flex
+		align-items: center
+		gap: 4px
+		flex: 1 1 auto
+		padding-right: $select-value-delete-size
+
+		background-color: $active
+		border-radius: 8px
+
+		user-select: none
+		overflow: clip 
+
+		&-text 
+			height: 100%
+			display: flex
+			align-items: center
+			padding: 4px 8px
+
+			color: #fff
+			font-size: 12px
+			white-space: nowrap
+
+		&-delete 
+			position: absolute
+			right: 0
+			top: 0
+			display: flex
+			width: $select-value-delete-size
+			height: 100% 
+
+			background-color: dark($active, 4%)
+
+			+t
+
+			+hov
+				background: dark($active, 16%)
+
+			span
+				width: 100%	
+				height: 100%
+
+				+mask(url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTIzLjM2MTUgMjEuMTQ5N0wxNC4wNTkyIDExLjg2TDIzLjM2MTUgMi42NzU5MUMyMy40NjcyIDIuNTcwMzQgMjMuNTcyOSAyLjQ2NDc4IDIzLjY3ODYgMi4zNTkyMUMyMy45OTU3IDEuOTM2OTUgMjQuMTAxNCAxLjQwOTEzIDIzLjg5IDAuOTg2ODY5QzIzLjY3ODYgMC41NjQ2MSAyMy4zNjE1IDAuMTQyMzUxIDIyLjgzMjkgMC4wMzY3ODYxQzIyLjMwNDQgLTAuMDY4Nzc4NyAyMS43NzU4IDAuMDM2Nzg2MSAyMS4yNDczIDAuNTY0NjFMMTEuOTQ1IDkuODU0MzFMNS4yODU0IDMuMjAzNzNDNC40Mzk3NCAyLjM1OTIxIDMuNDg4MzYgMS40MDkxMyAyLjY0MjcgMC41NjQ2MUMyLjIxOTg3IDAuMDM2Nzg2MSAxLjY5MTMzIC0wLjA2ODc3ODcgMS4xNjI3OSAwLjAzNjc4NjFDMC42MzQyNDggMC4xNDIzNTEgMC4yMTE0MTYgMC41NjQ2MSAwIDEuMDkyNDNWMS44MzEzOUMwLjEwNTcwOCAyLjI1MzY1IDAuNDIyODMyIDIuNTcwMzQgMC43Mzk5NTYgMi44ODcwNEw5LjgzMDg0IDExLjk2NTZMMC43Mzk5NTYgMjEuMDQ0MkMwLjQyMjgzMiAyMS4zNjA5IDAuMTA1NzA4IDIxLjY3NzYgMCAyMi4wOTk4VjIyLjczMzJDMC4yMTE0MTYgMjMuMzY2NiAwLjUyODU0IDIzLjc4ODkgMS4xNjI3OSAyNEgxLjc5NzA0QzIuMjE5ODcgMjMuODk0NCAyLjUzNjk5IDIzLjU3NzcgMi44NTQxMiAyMy4zNjY2TDExLjk0NSAxNC4yODhMMjEuMDM1OSAyMy4zNjY2QzIxLjM1MyAyMy42ODMzIDIxLjU2NDQgMjMuODk0NCAyMS45ODczIDI0SDIyLjYyMTVMMjIuODMyOSAyMy44OTQ0QzIzLjM2MTUgMjMuNjgzMyAyMy43ODQzIDIzLjE1NTUgMjMuNzg0MyAyMi41MjIxQzIzLjg5IDIxLjg4ODcgMjMuNjc4NiAyMS41NzIgMjMuMzYxNSAyMS4xNDk3WiIgLz4KPC9zdmc+Cg==) center / 50% no-repeat, #fff)
+
+	&__single 
+		overflow: hidden
+		text-overflow: ellipsis
+		white-space: nowrap
+		text-align: left
+
+	&__deselect 
+		display: none
+		
+		svg 
+			width: $select-input-close-size
+			aspect-ratio: 1/1
+
+		path 
+			stroke-width: 16
+			
+		+hov
+			path 
+				color: $active
+
+
+

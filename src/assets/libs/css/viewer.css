@@ -299,17 +299,18 @@
 
 .spl-next,
 .spl-prev {
-	top: 50%;
+	bottom: 0;
 	width: 50px;
-	height: 50px;
-	opacity: .65;
-	background-color: rgba(0, 0, 0, .45);
-	border-radius: 100%;
-	cursor: pointer;
-	margin-top: -25px;
-	transform: translateX(-100px);
+	height: calc(100% - 50px);
+
+	background-color: none;
+	border-radius: 8px;
 	background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+PHN2ZyBmaWxsPSJub25lIiBoZWlnaHQ9IjI0IiBzdHJva2U9IiNmZmYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIyIiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSIyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cG9seWxpbmUgcG9pbnRzPSIxNSAxOCA5IDEyIDE1IDYiLz48L3N2Zz4=);
-	background-size: 30px
+	background-size: 40px;
+
+	opacity: .65;
+	cursor: pointer;
+	transition: all .3s;
 }
 
 .spl-prev {
@@ -337,8 +338,11 @@
 	}
 
 	.spl-next:hover,
-	.spl-page~div:hover,
 	.spl-prev:hover {
+		background-color: rgba(255, 255, 255, .1)
+	}
+
+	.spl-page~div:hover {
 		opacity: 1
 	}
 }

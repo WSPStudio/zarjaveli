@@ -14,6 +14,7 @@ export let fixedElements = document.querySelectorAll("[data-fixed]");
 export let stickyObservers = new Map();
 
 export const allForms = document.querySelectorAll("form");
+export let modalStack = [];
 
 export const menuClass = ".header__mobile";
 export const menu = document.querySelector(menuClass) ? document.querySelector(menuClass) : document.querySelector("head");

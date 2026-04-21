@@ -1,4 +1,4 @@
-import { body, bodyOpenModalClass } from "../scripts/variables";
+import { body, bodyOpenModalClass, modalStack } from "../scripts/variables";
 import { hideScrollbar, showScrollbar } from "../scripts/ui/scrollbar";
 import { fadeIn, fadeOut } from "../scripts/ui/animation";
 import { getHash } from "../scripts/ui/url";
@@ -12,16 +12,13 @@ import { clearInputs } from "../scripts/forms/validation";
   ================================================
 */
 
-let modalStack = [];
-
 // Открытие модалки
 export function openModal(modal, addHashFlag = true, dataTab = null, stack = false) {
   if (!modal) return;
 
   if (!stack) {
-    // Если не стековая, то закрыть все остальные модалки
     document.querySelectorAll(".modal_open").forEach((m) => closeModal(m, false));
-    modalStack = [];
+    modalStack.length = 0;
     body.classList.add(bodyOpenModalClass);
   }
 
@@ -50,8 +47,10 @@ export function closeModal(modal, removeHashFlag = true) {
   modal.classList.remove("modal_open");
   modal.classList.add("modal_close");
 
-  // Убираем из стека
-  modalStack = modalStack.filter((m) => m !== modal);
+  const index = modalStack.indexOf(modal);
+  if (index !== -1) {
+    modalStack.splice(index, 1);
+  }
 
   setTimeout(() => {
     fadeOut(modal);
@@ -67,6 +66,25 @@ export function closeModal(modal, removeHashFlag = true) {
     }
 
     clearInputs();
+
+    function resetForm(form) {
+      if (!form) return;
+
+      form.reset();
+
+      let hiddenInputs = form.querySelectorAll('[name*="form_text"]');
+      if (hiddenInputs) {
+        hiddenInputs.forEach((input) => {
+          input.value = "";
+        });
+      }
+
+      let activeTags = form.querySelectorAll(".active");
+      activeTags.forEach((tag) => {
+        tag.classList.remove("active");
+      });
+    }
+
     resetForm(modal.querySelector("form"));
 
     setTimeout(() => {

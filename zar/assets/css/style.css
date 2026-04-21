@@ -2501,8 +2501,8 @@ a,
 }
 
 .contact__item {
-  display: grid;
-  grid-template-columns: 24px 1fr auto;
+  display: flex;
+  justify-content: flex-start;
   align-items: center;
   line-height: 1.5;
   text-shadow: 1px 2px 0 0 rgba(0,0,0,.2);
